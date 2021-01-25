@@ -1,0 +1,99 @@
+[type='radio'] {
+    display: none; 
+}
+.sypp-mainRadio-container{
+    display: flex;
+    flex-direction: row;
+    font-size: 7px;
+    align-items: center;
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: -5px;
+}
+
+[type='radio'] {
+    display: none; 
+}
+
+.sypp-button-towButtons-container{
+    margin-top: 15px;
+}
+.btn-secondary.sypp-colorChange2{
+    border-radius: 26px !important;
+    min-height: 24;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: black;
+    margin-right: 10px;
+    padding: 0;
+    font-size: 12px;
+}
+.sypp-category-radio-padding{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.btn-secondary.sypp-colorChange{
+    border-radius: 26px !important;
+    min-height: 24;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: black;
+    margin-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 12px;
+}
+
+.btn-secondary.sypp-twoButtons{
+    min-width: 56 !important;
+    min-height: 32 !important;
+}
+.btn-secondary:not(:disabled):not(.disabled).active.sypp-activeChange{
+    background: #C2DBFF;
+    border:none;
+    color: black;
+    font-family: Assistant;
+    font-style: normal;
+}
+
+.btn:hover.sypp-hoverChange{
+    font-family: Assistant;
+    font-style: normal;
+    background: #C2DBFF;
+    font-weight: bold;
+    border:none;
+    color: #363C46;
+}
+
+.btn.sypp-text1{
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-family: Assistant;
+    font-style: normal;
+    color: rgba(194, 219, 255, 1);
+}
+
+
+
+.btn-secondary.sypp-button-props{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 90px !important;
+}
+
+
+.sypp-radio-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-width: 65px; */
+    min-height: 24px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

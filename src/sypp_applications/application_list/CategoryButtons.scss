@@ -1,0 +1,75 @@
+.sypp-CategoryBox{
+    padding: 0;
+    font-size: 20px !important;
+    pointer-events: auto !important;
+    background: #363C46 !important;
+    z-index: 0;
+    &:hover {
+   visibility: visible !important;
+   opacity: 1 !important;
+    }
+    &.place-bottom {
+        &::after {
+        border-bottom-color: #363C46 !important;
+        background: transparent !important;
+        }
+        &::before {
+        border-bottom-color: #363C46 !important;
+        background: transparent !important;
+        }
+    }
+}
+.place-bottom {
+    &::after {
+    border-bottom-color: #363C46 !important;
+    background: transparent !important;
+    border-bottom-color: solid !important;
+    border-bottom-color: 6px !important;
+    }
+    &::before {
+    border-bottom-color: #363C46 !important;
+    background: transparent !important;
+    border-bottom-color: solid !important;
+    border-bottom-color: 6px !important;
+    }
+}
+
+
+.sypp-subCategory-button{
+    border: none;
+    background: none;
+    font-size: 10px;
+    color: white;
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    &:hover {
+        font-weight: bold;
+    }
+}
+
+.btn-secondary.sypp-colorChange2{
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 26px;
+}
+.sypp-applicationList-radio-container{
+    display: flex;
+    font-size: 12px;
+    padding: 10px;
+}
+.sypp-applicationList-radio-padding{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.sypp-applicationList-margin{
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.btn.sypp-text2{
+
+    font-weight: bold;
+    color: rgba(194, 219, 255, 1);
+}

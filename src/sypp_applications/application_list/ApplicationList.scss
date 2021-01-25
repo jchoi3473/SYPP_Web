@@ -1,0 +1,91 @@
+.sypp-mainpage-container{
+    margin-left: 18;
+    margin-right: 18;
+}
+
+.MuiRating-root.sypp-star {
+    background: transparent !important;
+    color: rgb(200,0,0);
+    cursor: pointer;
+    display: inline-flex;
+    position: relative;
+    font-size: 1.5rem;
+    text-align: left;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.MuiRating-iconEmpty.sypp-emptyStar {
+    color: rgba(0, 0, 0, 1) !important;
+    background-color: rgba(0, 0, 0, 1) !important;
+
+    /* border: solid; */
+}
+
+.MuiRating-iconFilled.sypp-filledStar{
+    color: rgba(200, 0, 0, 0.7) !important;
+}
+
+.sypp-taskTitles{
+    position: relative;
+    left: 95px;
+    display: flex;
+    width: 522px;
+    justify-content: space-evenly;
+}
+.sypp-taskEntity{
+    font-size: 10px;
+    color: #ffffff;
+}
+
+.sypp-selectedTitle{
+    margin-top: 11px;
+    color: rgba(255, 255, 255, 0.87);
+    font-weight: bold;
+    font-size: 14px;
+    // margin-left: 15px;
+}
+
+.sypp-modalButton{
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    z-index: 5;
+}
+
+.sypp-applicationlist-searchBox{
+    display: flex;
+    align-items: center;
+    padding-left: 7px;
+    width: 510px;
+    height: 24px;
+    font-size: 11px;
+    color: #ffffff;
+    border: 2px solid #363C46;
+    box-sizing: border-box;
+    border-radius: 30px;
+    background: transparent;
+    outline: none;
+}
+.sypp-appilication-name-container{
+    display: flex;
+}
+.sypp-trashIcon{
+    color: transparent;
+    font-size: 12px;
+    margin-top: 1px;
+    margin-left: 5px;
+}
+.sypp-trashIcon-Hover{
+    &:hover{
+        color: rgb(163, 164, 166);
+    }
+}
+.sypp-task-sortby{
+    margin-top: 3px;
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    color: rgba(221, 221, 221, 0.6);
+
+}

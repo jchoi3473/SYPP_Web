@@ -1,0 +1,28 @@
+
+.sypp-circle-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 27px;
+    margin-bottom: 35px;
+    padding: 0;
+}
+
+.sypp-other-circles {
+    display: inline-flex;
+    width: 10px;
+    height: 10px;
+    background: #5E6A7E;    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .sypp-circle{
+    display: inline-flex;
+    width: 10px;
+    height: 10px;
+    background: #C2DBFF;
+        border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;  
+  }
+

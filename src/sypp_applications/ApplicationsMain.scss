@@ -1,0 +1,77 @@
+.sypp-applicationMain-Container{
+    position: relative;
+    // background-color: skyblue;
+    top: 10px;
+    height: 100%;
+    margin-left: 30px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.sypp-weeklyDeadline-container{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 53px;
+}
+.sypp-weeklyDealine-individual{
+    width: 187px;
+    height: 138px;
+    padding-top: 5px;    
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 9px;
+    background: #242931;
+    text-align: right;
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-right: 10px;
+    border-radius: 15px;
+}
+.sypp-applicationMain-subContainer{
+    display: flex;
+    flex-direction: row;
+}
+.sypp-applicationMain-list{
+    width: 545px;
+    height: 569px;
+    background: #242931;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+.sypp-applicationMain-detail{
+    // width: 100%;
+    width: 815px;
+    height: 569px;
+    background: #242931;
+    border-radius: 20px;
+    padding-left: 15px;
+    padding-right: 11px;
+}
+.sypp-applicationMain-list-extended{
+    width: 545px;
+    height: 758px;
+    background: #242931;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+.sypp-applicationMain-detail-extended{
+    // width: 100%;
+    width: 815px;
+    height: 758px;
+    background: #242931;
+    border-radius: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.sypp-radio-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-width: 65px; */
+    min-height: 24px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

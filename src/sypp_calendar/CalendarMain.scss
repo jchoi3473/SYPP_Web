@@ -1,0 +1,75 @@
+.sypp-calendar-main{
+    margin: 0px;
+    padding: 0px;
+}
+
+.sypp-day{
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.sypp-weekday{
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+}
+
+.sypp-month-display{
+    text-align: center;
+}
+
+.sypp-day-container{
+    width: 187px;
+    height: 138px;
+    background: #242931;
+    border-radius: 15px;
+    margin-right: 10px;
+    margin-bottom: 11px;
+}
+
+.sypp-row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sypp-day-names{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    padding-right: 38px;
+}
+
+.month-label{
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.sypp-calendar-arrow{
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sypp-month-display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 38px;
+    padding-bottom: 17px;
+}
+
+.sypp-different-month{
+    color: rgba(255, 255, 255, 0.435) !important;
+}
+
+.sypp-today{
+    border: 2px solid #C2DBFF;
+}

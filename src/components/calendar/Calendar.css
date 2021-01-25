@@ -1,0 +1,44 @@
+
+.react-calendar__navigation button{
+    color: #ffffff;
+}
+.react-calendar__tile.sypp-customTile{
+    padding: 0.5em 0.5em;
+    color: rgba(255, 255, 255, 0.87);
+    outline: none;
+    /* background: tomato !important; */
+}
+.react-calendar__tile--active.sypp-background{
+    /* background: rgba(255, 255, 255, 0.4); */
+    background: transparent;
+    color: #FFE9D6 !important;
+    font-weight: bold;
+    border: transparent;
+    outline: none;
+}
+.react-calendar__tile--active:enabled:focus.sypp-changeFocus{
+    /* background: rgba(255, 255, 255, 0.4); */
+    background: transparent !important;
+    border-radius: 0 !important;
+    border: transparent !important;
+    /* background-color: rgba(255, 255, 255, 0.4); */
+    background: transparent !important;
+    outline: none;
+}
+
+.react-calendar.sypp-changeMargin{
+    max-width: 85%;
+    margin: 0 auto;
+}
+.react-calendar__year-view.sypp-changeSize{
+    padding: 1em 0.5em;
+}
+
+.react-calendar, .react-calendar *, .react-calendar *:before, .react-calendar *:after {
+    /* color: rgba(255, 255, 255, 0.435); */
+}
+
+.react-calendar__tile--now{
+    /* background: rgba(255, 255, 255, 0.4) !important; */
+    background: transparent !important;
+}

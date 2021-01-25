@@ -1,0 +1,178 @@
+.sypp-applicationFirst{
+    position: relative;
+    display: inline-flex;
+    height: 15px ;
+    width: 15px;
+    border-radius: 7.25px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.sypp-progress-all{
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 5px;
+    // padding-top: 5px;
+    // padding-bottom: 5px;
+    &:hover {
+        border: 2px solid rgba(194, 219, 255, 1);
+        background: rgba(156, 193, 249, 0.2);
+        z-index: -1;
+        width: 514px;
+    }
+    width: 510px;
+    height: 44px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.sypp-application-name{
+  min-width: 160px;
+  max-width: 160px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+.sypp-application-name-container{
+    position: relative;
+    min-width: 160px;
+    max-width: 160px;
+}
+.sypp-starIcon{
+    color: rgba(255,255,255,.87) !important;
+}
+
+.sypp-starSize{
+    font-size: 0.8em !important;
+}
+
+.sypp-starContainer{
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    margin-left: 10px;
+}
+
+.sypp-extraClass {
+    padding: 0;
+    font-size: 10px !important;
+    color: black !important;
+    margin-top: 15px !important;
+    pointer-events: auto !important;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 10px;
+    // background-color: # !important;
+    &:hover {
+    visibility: visible !important;
+    background-color: transparent;
+    opacity: 1 !important;
+    }
+    &.place-bottom {
+        &:after {
+        background-color: transparent !important;
+        border-left-color: transparent !important;
+        color: transparent;
+        border-color: transparent !important;
+        border-bottom-color: transparent !important;
+        }
+        &::before {
+        background-color: transparent;
+        border-bottom-color: transparent !important;
+        }
+    }
+}
+.sypp-Completed {
+    background-color: #94CE4B !important;
+}
+.sypp-NotCompleted{
+    background-color: #FFD600 !important;
+}
+
+.sypp-task-tooltip-completed{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #94CE4B;
+    color: #1A1C20;
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 27px;
+    margin-top: 2px;
+    margin-left: -10px;
+    min-width: 59px;
+    max-width: auto;
+    height: 17px;
+    z-index: 10;
+}
+.sypp-task-tooltip-notcompleted{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFD600;
+    min-width: 59px;
+    max-width: auto;
+    height: 17px;
+    color: #1A1C20;
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 27px;
+    margin-top: 2px;
+    z-index: 10;
+    margin-left: -10px;
+}
+.sypp-task-tooltip-more{
+    cursor: pointer;
+    margin-left: 3.5px;
+    margin-right: -3.5px;
+    transform: rotate(90deg);
+}
+
+.popup-arrow {
+    background: transparent;
+    color: transparent;
+    width: 40px;
+    left: -70px;
+    top: -10px;
+}
+.popup-content {
+    margin-left: 70px;
+    margin-top: -5px;
+  }
+
+.sypp-progress-tooltip-options-container{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background: #363C46;
+    border-radius: 5px;
+}
+.sypp-progress-tooltip-option{
+    padding: 0;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.9);
+    &:focus{
+        border: none;
+        outline: none;
+    }
+}

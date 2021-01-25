@@ -1,0 +1,120 @@
+.sypp-progressbar-container{
+    display: inline-block;
+    text-align: center;
+}
+.sypp-progressLine{
+    display: inline-flex;
+    margin: 0 auto;
+    width: 265px;
+    height: 0.7px;
+    margin-top: 10px;
+    margin-bottom: -13px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.sypp-progress-outer-container{
+    margin:0 auto;
+    display: flex;
+    justify-content: center;
+}
+.sypp-progress-inner-container{
+    display: flex;
+    justify-content: center;
+    width: 240px;
+}
+
+.sypp-completed{
+    background: #94CE4B;
+
+}
+.sypp-notCompleted{
+    background: #FFD600;
+
+}
+.sypp-green{
+    background: #94CE4B;
+}
+.MuiFab-root.sypp-addTask{
+    /* display: inline-flex; */
+    font-size: 5px;
+    height: 15px !important;
+    width: 15px;
+    border-radius: 7.25px;
+    margin-bottom: 9px;
+    border: 1px solid #E3E3E3;
+    color: #E3E3E3;
+    box-shadow: none;
+    text-align: center;
+    padding: 0 0 0 0;
+    outline: none;
+    background-color: #E3E3E3;
+    min-height: 0;
+    min-width: 0;
+}
+
+.MuiSvgIcon-root.sypp-sizeChange{
+    height: 1.3em;
+    width: 1.3em;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+    min-height: 0%;
+    margin: 0;
+    text-align: center;
+    color: rgb(65,65,65);
+}  
+.sypp-date-font{
+    font-size: 5px;
+    margin: 0;
+    padding: 0;
+    color: rgba(255,255,255,.6);
+}
+.sypp-application-status-container{
+    display: block;
+    text-align: center;
+    margin-top: 4px;
+    width: 40px;
+    height: 32px;
+}
+
+.sypp-application-result-container{
+    display: block;
+    text-align: center;
+    margin-top: 4px;
+    width: 30px;
+    height: 32px;
+}
+.sypp-progress-position{
+    margin: 0;
+    font-size: 12px;
+    min-width: 160px;
+    max-width: 160px;
+    color: rgba(255,255,255,.87);
+
+}
+.sypp-progress-company{
+    margin-bottom: -4;
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFE9D6;
+}
+.sypp-searchBox{
+    width: 510px;
+    height: 20px;
+    font-size: 11px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    border-radius: 30px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sypp-applicationFirst:hover + .sypp-task-hide-completed{
+    display: block;
+    background-color:#94CE4B;
+}
+.sypp-applicationFirst:hover + .sypp-task-hide-notcompleted{
+    display: block;
+    background-color:#FFD600;
+}
+

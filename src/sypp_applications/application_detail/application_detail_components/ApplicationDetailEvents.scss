@@ -1,0 +1,14 @@
+.sypp-EventDateTime{
+    color: rgba(255, 233, 214, 1);
+    font-size: 10px;
+}
+
+.sypp-EventDetailContainer{
+    display: flex;
+    flex-direction: column;
+    // min-width: 440px;
+    cursor: pointer;
+}
+.sypp-EventContainer{
+    display: flex;
+}

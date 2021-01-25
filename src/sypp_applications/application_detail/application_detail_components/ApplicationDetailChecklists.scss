@@ -1,0 +1,41 @@
+.MuiCheckbox-root.sypp-Checkbox-padding{
+    padding: 0 !important;
+}
+.sypp-CheckBox-root{
+    // background-color: rgb(42,42,42);
+}
+
+.sypp-CheckList-Container{
+    display: flex;
+    // justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 20px;
+    // margin-top: -1px;
+}
+.sypp-Editor-Container{
+    display: inline block;
+    // width: 470px;
+}
+.sypp-ApplicationDetailChecklists-container{
+    display: flex
+}
+
+.sypp-CheckBox-icon{
+    color: white;;
+    font-size: 12px;
+    padding: 0 !important;
+}
+
+.MuiFormControlLabel-root.sypp-FormRoot{
+    margin: 0;
+    padding: 0 !important;
+}
+.sypp-checklist-body{
+    font-size: 10px;
+    color: #F5F5F5;
+    font-size: 11px;
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: normal;
+}

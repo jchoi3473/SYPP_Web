@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import MainPage from './sypp_main/MainPage'
+import React, { Component } from 'react';
+import {requestApplication} from './redux/application-reducer/applicationAction'
+import {connect} from 'react-redux'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const mapStatetoProps = state => {
+  return{
+      apps: state.application.applications,
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return{
+    onRequestApplication: () => dispatch(requestApplication()),
+  }
 }
 
-export default App;
+class App extends Component{
+  async componentDidMount(){
+    const apps = await this.props.onRequestApplication();
+    
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <MainPage/>
+      </div>
+    );
+  }
+}
+
+export default connect(mapStatetoProps, mapDispatchToProps)(App);
