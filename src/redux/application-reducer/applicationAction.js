@@ -5,7 +5,7 @@ export const setApps = (apps) => ({
 
 export const requestApplication = () => (dispatch) => {
     dispatch({type: 'REQUEST_PROGRESS_PENDING'});
-    fetch('http://saveyourappdevelopment.azurewebsites.net/mockdata/getapplications')
+    fetch('https://saveyourappdevelopment.azurewebsites.net/mockdata/getapplications')
     .then(res => res.json())
     .then(data => dispatch({
         type: 'REQUEST_PROGRESS_SUCCESS',
