@@ -32,23 +32,23 @@ class ApplicationDetailEvents extends React.Component {
     constructor(props) {
         super(props);
         const contentBlocksArray = []
-        for (var i=0;i<this.props.Event.Contents.length;i++){
-            if(this.props.Event.Contents.length !== 0){
+        for (var i=0;i<this.props.Event.contents.length;i++){
+            if(this.props.Event.contents.length !== 0){
                 contentBlocksArray.push(
                     new ContentBlock({
-                        key: this.props.Event.Contents[i].eventContentsID,
+                        key: this.props.Event.contents[i].noteContentsID,
                         type: 'unordered-list-item',
                         depth: 0,
-                        text: this.props.Event.Contents[i].Header
+                        text: this.props.Event.contents[i].header
                       })
                 )
-                for(var j=0;j<this.props.Event.Contents[i].Contents_Text.length;j++){
+                for(var j=0;j<this.props.Event.contents[i].contents_Text.length;j++){
                     contentBlocksArray.push(
                         new ContentBlock({
                             key: genKey(),
                             type: 'unordered-list-item',
                             depth: 1,
-                            text: this.props.Event.Contents[i].Contents_Text[j]
+                            text: this.props.Event.contents[i].contents_Text[j]
                           })
                     )
                 }
@@ -115,9 +115,9 @@ class ApplicationDetailEvents extends React.Component {
           <div className="sypp-ApplicationDetailNote-container sypp-EventContainer">
             <div className = "sypp-EventDetailContainer"  onClick={e => this.handleOpen(e)}>
             {/* <div className="ApplicationDetailNote-title-container"> */}
-              <div className = "sypp-applicationDetailTextTitle">{this.props.Event.Detail.Title}</div>
-              <div className = "sypp-EventDateTime">{Moment(this.props.Event.Detail.Time).format('MMM DD, YYYY - h:mma')}</div>
-              <div className = "sypp-EventDateTime">{this.props.Event.Detail.Location}</div>
+              <div className = "sypp-applicationDetailTextTitle">{this.props.Event.detail.title}</div>
+              <div className = "sypp-EventDateTime">{Moment(this.props.Event.detail.time).format('MMM DD, YYYY - h:mma')}</div>
+              <div className = "sypp-EventDateTime">{this.props.Event.detail.location}</div>
             {/* </div> */}
             {/* <Editor 
               toolbarHidden
@@ -127,12 +127,12 @@ class ApplicationDetailEvents extends React.Component {
               keyBindingFn={this.myKeyBindingFn}
             /> */}
             {
-              this.props.Event.Contents.map((data) => (
+              this.props.Event.contents.map((data) => (
                 <div>
-                <div className = "sypp-note-text-header">{' • ' +data.Header}</div>
+                <div className = "sypp-note-text-header">{' • ' +data.header}</div>
                 {
-                  data.Contents_Text.length != 0 ?  
-                    data.Contents_Text.map((subText)=>(
+                  data.contents_Text.length != 0 ?  
+                    data.contents_Text.map((subText)=>(
                       <div className = "sypp-note-text-subText">{' • ' +subText}</div>
                     ))
                   : undefined

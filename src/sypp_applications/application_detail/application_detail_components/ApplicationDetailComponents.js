@@ -51,10 +51,10 @@ class ApplicationDetailComponents extends Component {
                             <div class = "row">
                                 <div class = "col">
                                 {
-                                    this.props.applicationDetail.Events.length !== 0 ? 
+                                    this.props.applicationDetail.events.length !== 0 ? 
                                     <div>
                                         <div className = "sypp-applicationDetail-all-title">Events</div>
-                                        {this.props.applicationDetail.Events.map((event) =>(
+                                        {this.props.applicationDetail.events.map((event) =>(
                                             <ApplicationDetailEvents onSaveEventNote = {this.onSaveEventNote} Event = {event} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>))}
                                     </div>:
                                         undefined
@@ -62,10 +62,10 @@ class ApplicationDetailComponents extends Component {
                                 </div>
                                 <div class = "col">
                                 {
-                                    this.props.applicationDetail.Notes.length !== 0 ? 
+                                    this.props.applicationDetail.notes.length !== 0 ? 
                                     <div>
                                         <div className = "sypp-applicationDetail-all-title">Notes</div>
-                                        {this.props.applicationDetail.Notes.map((note) =>(
+                                        {this.props.applicationDetail.notes.map((note) =>(
                                             <ApplicationDetailNotes onSaveNote = {this.onSaveNote}  Note = {note} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>))}
                                     </div>
                                         :undefined
@@ -73,10 +73,10 @@ class ApplicationDetailComponents extends Component {
                                 </div>
                                 <div class = "col">
                                 {
-                                    this.props.applicationDetail.Contacts.length !== 0 ? 
+                                    this.props.applicationDetail.contacts.length !== 0 ? 
                                     <div>
                                         <div className = "sypp-applicationDetail-all-title">Contacts</div>
-                                        {this.props.applicationDetail.Contacts.map((data) => (
+                                        {this.props.applicationDetail.contacts.map((data) => (
                                             <ApplicationDetailContacts onSaveContactNote = {this.onSaveContactNote} contact = {data} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>))}
                                     </div>:
                                         undefined
@@ -84,10 +84,10 @@ class ApplicationDetailComponents extends Component {
                                 </div>
                                 <div class = "col">
                                 {
-                                    this.props.applicationDetail.FollowUps.length !== 0 ? 
+                                    this.props.applicationDetail.followUps.length !== 0 ? 
                                     <div>
                                         <div className = "sypp-applicationDetail-all-title">Conversational Histories</div>
-                                        {this.props.applicationDetail.FollowUps.map((FollowUp) =>(
+                                        {this.props.applicationDetail.followUps.map((FollowUp) =>(
                                             <ApplicationDetailFollowUp onSaveConversation = {this.onSaveConversation} FollowUp = {FollowUp} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>))}
                                     </div>:
                                         undefined
@@ -95,10 +95,10 @@ class ApplicationDetailComponents extends Component {
                                 </div>
                                 <div class = "col">
                                 {
-                                    this.props.applicationDetail.Checklists.length !== 0 ? 
+                                    this.props.applicationDetail.checklists.length !== 0 ? 
                                     <div>
                                         <div className = "sypp-applicationDetail-all-title">Checklist</div>
-                                        {this.props.applicationDetail.Checklists.map((checklist) =>(
+                                        {this.props.applicationDetail.checklists.map((checklist) =>(
                                             <ApplicationDetailChecklists onSaveChecklist = {this.onSaveChecklist}  Checklist = {checklist} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>))}
                                     </div>:
                                         undefined
@@ -111,7 +111,7 @@ class ApplicationDetailComponents extends Component {
                     return (
                         <div>
                             {
-                            this.props.applicationDetail.Events.map((event) =>(
+                            this.props.applicationDetail.events.map((event) =>(
                                 <ApplicationDetailEvents onSaveEventNote = {this.onSaveEventNote} Event = {event} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
                             ))
                             }
@@ -121,7 +121,7 @@ class ApplicationDetailComponents extends Component {
                     return (
                         <div>
                             {
-                            this.props.applicationDetail.Notes.map((note) =>(
+                            this.props.applicationDetail.notes.map((note) =>(
                                 <ApplicationDetailNotes onSaveNote = {this.onSaveNote} Note = {note} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
                             ))
                             }
@@ -131,7 +131,7 @@ class ApplicationDetailComponents extends Component {
                     return (
                         <div>
                             {
-                            this.props.applicationDetail.Contacts.map((data) => (
+                            this.props.applicationDetail.contacts.map((data) => (
                                 <ApplicationDetailContacts onSaveContactNote = {this.onSaveContactNote} contact = {data} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
                             ))
                             }
@@ -141,7 +141,7 @@ class ApplicationDetailComponents extends Component {
                     return (
                         <div>
                             {
-                            this.props.applicationDetail.FollowUps.map((FollowUp) =>(
+                            this.props.applicationDetail.followUps.map((FollowUp) =>(
                                 <ApplicationDetailFollowUp onSaveConversation = {this.onSaveConversation} FollowUp = {FollowUp} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
                             ))
                             }
@@ -151,7 +151,7 @@ class ApplicationDetailComponents extends Component {
                     return (
                         <div>
                             {
-                            this.props.applicationDetail.Checklists.map((checklist) =>(
+                            this.props.applicationDetail.checklists.map((checklist) =>(
                                 <ApplicationDetailChecklists onSaveChecklist = {this.onSaveChecklist} Checklist = {checklist} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
                             ))
                             }

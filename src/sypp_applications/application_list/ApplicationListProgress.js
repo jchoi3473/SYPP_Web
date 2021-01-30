@@ -56,23 +56,23 @@ export class Progress extends Component{
 
         for(var i=0; i<apps.length;i++){
             if(apps[i].applicationID+"" === applicationID+""){
-                apps[i].Detail.IsFavorite = !apps[i].Detail.IsFavorite
+                apps[i].detail.isFavorite = !apps[i].detail.isFavorite
                 break;
             }
         }
         this.props.setApps(apps)
         this.setState({})
     }
-
-    onClickAdd = (applicationID, title, date, showDate) => {
+    //mid task add, need to make fetch call
+    onClickAdd = (applicationID, title, date, isVisible) => {
         const apps = this.props.apps
         apps.map((data) => {
             if(data.applicationID === applicationID){
-                data.Tasks = data.Tasks.concat({
-                    Time: date,
-                    Title: title,
-                    showDate : showDate,
-                    Status: false
+                data.tasks = data.tasks.concat({
+                    time: date,
+                    title: title,
+                    isVisible : isVisible,
+                    status: false
                 })
             }
         })
@@ -92,7 +92,7 @@ export class Progress extends Component{
 
     render(){
         const searchFilteredProgress = this.props.filteredProgress.filter(application => {
-            return (application.Detail.CompanyName.toLowerCase().includes(this.state.searchField.toLowerCase())||application.Detail.PositionName.toLowerCase().includes(this.state.searchField.toLowerCase()) )
+            return (application.detail.companyName.toLowerCase().includes(this.state.searchField.toLowerCase())||application.detail.positionName.toLowerCase().includes(this.state.searchField.toLowerCase()) )
         })
 
         return(
@@ -113,28 +113,30 @@ export class Progress extends Component{
                 <div className="sypp-taskEntity">Task</div>
                 <div className="sypp-taskEntity">Result</div>
             </div>
+                <div className = "sypp-applicationList-container" style={{overflowY: 'scroll', height: '400px'}}>
                 {
                 (searchFilteredProgress.length > 0)?
                 searchFilteredProgress.map((data) => (
                         <div className = "sypp-progress-all sypp-trashIcon-Hover">
                             <div className = "sypp-starContainer">
-                            <Rating className ="sypp-starIcon" applicationName = {data.applicationID} stop={1} initialRating = {data.Detail.IsFavorite?1:0} onClick = {() => this.onClickIsFavorite(data.applicationID)}
+                            <Rating className ="sypp-starIcon" applicationName = {data.applicationID} stop={1} initialRating = {data.detail.isFavorite?1:0} onClick = {() => this.onClickIsFavorite(data.applicationID)}
                             emptySymbol="fa fa-star-o starSize starIcon"
                             fullSymbol = "fa fa-star starSize starIcon"
                                 />
                             </div>
-                                <div>{console.log(data)}</div>
                                 <div className = "sypp-application-name" onClick = {() => this.props.onClickProgressAll(data.applicationID)}>
                                 <div className = "sypp-appilication-name-container" >
-                                    <div className = "sypp-progress-company"  >{data.Detail.CompanyName}</div>
+                                    <div className = "sypp-progress-company"  >{data.detail.companyName}</div>
                                     <FontAwesomeIcon className = "sypp-trashIcon sypp-trashIcon-Hover" icon={faTrashAlt} onClick = {this.onClickDelete}/>
                                 </div>
-                                <div className = "sypp-progress-position" >{data.Detail.PositionName}</div>
+                                <div className = "sypp-progress-position" >{data.detail.positionName}</div>
                                 </div>
-                            <ProgressBar applicationID = {data.Detail.applicationID} applied = {data.applied} dates = {data.Tasks} details = {data.Detail.Status[0]} onClickAdd = {this.onClickAdd}/>
+                            <ProgressBar applicationID = {data.applicationID} applied = {data.applied} dates = {data.tasks} details = {data.detail.status[0]} onClickAdd = {this.onClickAdd}/>
                         </div>
                         )):undefined
                 }
+
+                </div>
             </div>
         )
     }

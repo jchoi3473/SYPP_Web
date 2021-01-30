@@ -229,19 +229,19 @@
 }
 
 .sypp-CheckList-Container{
+    margin-top: 1px;
     display: flex;
     // justify-content: center;
     flex-direction: column;
-    justify-content: space-evenly;
     width: 20px;
-    // margin-top: -1px;
 }
 .sypp-Editor-Container{
     display: inline block;
     // width: 470px;
 }
 .sypp-ApplicationDetailChecklists-container{
-    display: flex
+    display: flex;
+    flex-direction: row;
 }
 
 .sypp-CheckBox-icon{
@@ -262,4 +262,12 @@
 }
 .sypp-emptybody-checkbox-container{
     margin-top: 17px;
+}
+.sypp-checkbox-editorState{
+    line-height: 16px;
+}
+.sypp-checkbox-container{
+    display: flex;
+    align-items: center;
+    height: 16px;
 }

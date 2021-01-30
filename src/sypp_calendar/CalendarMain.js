@@ -94,13 +94,13 @@ class CalendarMain extends Component {
     render() {
       var taskArray = []
       for(var i=0; i<this.props.apps.length; i++){
-        if(this.props.apps[i].Tasks.length !== 0){
-          for(var j=0;j<this.props.apps[i].Tasks.length;j++){
+        if(this.props.apps[i].tasks.length !== 0){
+          for(var j=0;j<this.props.apps[i].tasks.length;j++){
             taskArray.push({
-              CompanyName : this.props.apps[i].Detail.CompanyName,
-              PositionName : this.props.apps[i].Detail.PositionName,
-              Task : this.props.apps[i].Tasks[j],
-              Time : this.props.apps[i].Tasks[j].Time,
+              CompanyName : this.props.apps[i].detail.companyName,
+              PositionName : this.props.apps[i].detail.positionName,
+              Task : this.props.apps[i].tasks[j],
+              Time : this.props.apps[i].tasks[j].time,
               type : 'application',
               id : this.props.apps[i].applicationID
             })

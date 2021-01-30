@@ -69,20 +69,20 @@ export class Progress extends Component{
         this.setState({
             isHovering: false
         })
-        this.props.handleCompleted(this.props.date, this.props.date.Title)
+        this.props.handleCompleted(this.props.date, this.props.date.title)
     }
 
     onClickSave = (title, date, dateShow) =>{
         var applications = this.props.apps
         for(var i=0 ; i<applications.length;i++){
             if(this.props.applicationID === applications[i].applicationID){
-                console.log(applications[i].Tasks.length)
-                for(var j=0; j<applications[i].Tasks.length;j++){
-                    console.log(applications[i].Tasks[j])
-                    if(applications[i].Tasks[j].midTaskID === this.props.date.midTaskID){
-                        applications[i].Tasks[j].Title = title
-                        applications[i].Tasks[j].Time = date
-                        applications[i].Tasks[j].showDate = dateShow
+                console.log(applications[i].tasks.length)
+                for(var j=0; j<applications[i].tasks.length;j++){
+                    console.log(applications[i].tasks[j])
+                    if(applications[i].tasks[j].midTaskID === this.props.date.midTaskID){
+                        applications[i].tasks[j].title = title
+                        applications[i].tasks[j].time = date
+                        applications[i].tasks[j].isVisible = dateShow
                     }
                 }
             }
@@ -117,7 +117,7 @@ export class Progress extends Component{
                 {
                 this.state.isHovering &&this.props.completed?
                     <div className = "sypp-task-tooltip-completed">
-                        <div>{this.props.date.Title}</div>
+                        <div>{this.props.date.title}</div>
                         <Popup
                         trigger={
                             <div className ="sypp-task-tooltip-more">
@@ -136,11 +136,10 @@ export class Progress extends Component{
                         </div>:
                     undefined                
                 }
-
                 {
                 this.state.isHovering &&!this.props.completed?
                     <div className = "sypp-task-tooltip-notcompleted">
-                        <div>{this.props.date.Title}</div>
+                        <div>{this.props.date.title}</div>
                         <Popup
                         trigger={
                             <div className ="sypp-task-tooltip-more">

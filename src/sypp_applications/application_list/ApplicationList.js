@@ -4,6 +4,10 @@ import {setApps} from './../../redux/application-reducer/applicationAction'
 import {connect} from 'react-redux'
 import ApplicationListComponents from './ApplicationListComponents'
 import ApplicationListProgress from './ApplicationListProgress'
+import ModalBox from './../application_add_application/ModalBox'
+import './../application_add_application/Modalbox.css'
+
+
 const mapStatetoProps = state => {
     return{
         apps: state.application.applications,
@@ -45,9 +49,9 @@ class ApplicationList extends Component {
         const categoryDivided = () =>{
             var temp = []
             for(var i=0; i<this.props.apps.length; i++){
-                for(var j=0; j<this.props.apps[i].Detail.Categories.length;j++){
-                    if(!temp.includes(this.props.apps[i].Detail.Categories[j].Type) && this.props.apps[i].Detail.Categories[j].SuggestionsOrSeleceted.length>0){
-                            temp = temp.concat(this.props.apps[i].Detail.Categories[j].Type)}
+                for(var j=0; j<this.props.apps[i].detail.categories.length;j++){
+                    if(!temp.includes(this.props.apps[i].detail.categories[j].type) && this.props.apps[i].detail.categories[j].suggestionsOrSeleceted.length>0){
+                            temp = temp.concat(this.props.apps[i].detail.categories[j].type)}
                     }
             }
             for(var i=0;i<temp.length;i++){
@@ -63,6 +67,9 @@ class ApplicationList extends Component {
                 {categoryDivided()}
                 <ApplicationListComponents options = {radioValue} onChange = {this.onChange}/>
                 <ApplicationListProgress onClickProgressAll = {this.props.onClickProgressAll}/>
+                <div className = 'sypp-modalButton'>
+                    <ModalBox/>
+                </div>
             </div>
         );
     }

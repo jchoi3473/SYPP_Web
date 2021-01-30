@@ -58,9 +58,9 @@ export class ProgressBar extends Component{
         const apps = this.props.apps
         for(var i=0;i<apps.length;i++){
             if(apps[i].applicationID === this.props.applicationID){
-                for(var j=0;j<apps[i].Tasks.length;j++){
-                    if(apps[i].Tasks[j].midTaskID === date.midTaskID){
-                        apps[i].Tasks[j].Status = !apps[i].Tasks[j].Status
+                for(var j=0;j<apps[i].tasks.length;j++){
+                    if(apps[i].tasks[j].midTaskID === date.midTaskID){
+                        apps[i].tasks[j].status = !apps[i].tasks[j].status
                         break;
                     }
                 }
@@ -75,10 +75,10 @@ export class ProgressBar extends Component{
     //Task click function for applied task
     handleCompletedApplied = () => {
         console.log("Clicked")
-        const apps = this.props.filteredProgress
+        const apps = this.props.apps
         for(var i=0;i<apps.length;i++){
             if(apps[i].applicationID === this.props.applicationID){
-                apps[i].Detail.Status[0].Status = !apps[i].Detail.Status[0].Status
+                apps[i].detail.status[0].status = !apps[i].detail.status[0].status
             }
         }
         this.props.setApps(apps)
@@ -124,7 +124,7 @@ export class ProgressBar extends Component{
     render(){
         const dates = this.props.dates
         const detailStatus = this.props.details
-        const sortedDates = dates.sort((a, b) => a.Time - b.Time)
+        const sortedDates = dates.sort((a, b) => a.time - b.time)
         return(
                 <div className = "sypp-progressbar-container">
                     <div className = "sypp-progressLine"/>
@@ -132,14 +132,14 @@ export class ProgressBar extends Component{
                         {
                         // sortedDates.map((date) => (
                         //     (date != null)?
-                                (detailStatus.Status)?
+                                (detailStatus.status)?
                                     <div className = "sypp-application-status-container">
                                         <div className="sypp-applicationFirst sypp-completed" onClick = {()=>this.handleCompletedApplied()}></div>
-                                        <div className="sypp-date-font">{Moment(detailStatus.Time).format('MMM DD')}</div>
+                                        <div className="sypp-date-font">{Moment(detailStatus.time).format('MMM DD')}</div>
                                     </div>:
                                     <div className = "sypp-application-status-container">
                                         <div className="sypp-applicationFirst sypp-notCompleted" onClick = {()=>this.handleCompletedApplied()}></div>
-                                        <div className="sypp-date-font">{Moment(detailStatus.Time).format('MMM DD')}</div>
+                                        <div className="sypp-date-font">{Moment(detailStatus.time).format('MMM DD')}</div>
                                     </div>
                             // :undefined
                         // ))
@@ -148,9 +148,9 @@ export class ProgressBar extends Component{
                             {
                             sortedDates.map((date) => (
                                 <div>
-                                {(date.Title!=="Applied")?
-                                    ((date.showDate)?
-                                        ((date.Status)?
+                                {(date.title!=="Applied")?
+                                    ((date.isVisible)?
+                                        ((date.status)?
                                             <div className = "sypp-application-status-container">
                                                 <Progress applicationID = {this.props.applicationID} completed = {true} handleCompleted = {this.handleCompleted} date = {date}/>
                                             </div>: 

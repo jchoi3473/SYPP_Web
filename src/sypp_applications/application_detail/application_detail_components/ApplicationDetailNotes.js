@@ -36,23 +36,23 @@ class ApplicationDetailNotes extends React.Component {
     constructor(props) {
         super(props);
         const contentBlocksArray = []
-        for (var i=0;i<this.props.Note.Contents.length;i++){
-            if(this.props.Note.Contents.length !== 0){
+        for (var i=0;i<this.props.Note.contents.length;i++){
+            if(this.props.Note.contents.length !== 0){
                 contentBlocksArray.push(
                     new ContentBlock({
-                        key: this.props.Note.Contents[i].noteContentsID,
+                        key: this.props.Note.contents[i].noteContentsID,
                         type: 'unordered-list-item',
                         depth: 0,
-                        text: this.props.Note.Contents[i].Header
+                        text: this.props.Note.contents[i].header
                       })
                 )
-                for(var j=0;j<this.props.Note.Contents[i].Contents_Text.length;j++){
+                for(var j=0;j<this.props.Note.contents[i].contents_Text.length;j++){
                     contentBlocksArray.push(
                         new ContentBlock({
                             key: genKey(),
                             type: 'unordered-list-item',
                             depth: 1,
-                            text: this.props.Note.Contents[i].Contents_Text[j]
+                            text: this.props.Note.contents[i].contents_Text[j]
                           })
                     )
                 }
@@ -120,16 +120,16 @@ class ApplicationDetailNotes extends React.Component {
           <div className= "sypp-ApplicationDetailNote-container">
             <div className="sypp-ApplicationDetailNote-title-container" onClick = {this.handleOpen}>
             <div className = "sypp-ApplicationDetailNote-title">
-            <div className = "sypp-applicationDetailTextTitle">{this.props.Note.Detail.Title}</div>
+            <div className = "sypp-applicationDetailTextTitle">{this.props.Note.detail.title}</div>
             </div>
             <div>
             {
-              this.props.Note.Contents.map((data) => (
+              this.props.Note.contents.map((data) => (
                 <div>
-                <div className = "sypp-note-text-header">{' • ' +data.Header}</div>
+                <div className = "sypp-note-text-header">{' • ' +data.header}</div>
                 {
-                  data.Contents_Text.length != 0 ?  
-                    data.Contents_Text.map((subText)=>(
+                  data.contents_Text.length != 0 ?  
+                    data.contents_Text.map((subText)=>(
                       <div className = "sypp-note-text-subText">{' • ' +subText}</div>
                     ))
                   : undefined

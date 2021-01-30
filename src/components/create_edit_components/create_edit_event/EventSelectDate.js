@@ -102,7 +102,7 @@ class EventSelectDate extends Component {
         if(this.state.minute === ''){
             minute = 0
         }
-        var date = this.props.eventDate;
+        var date = new Date(this.props.eventDate);
         if(this.props.eventDate === ''){
             date = new Date()
         }

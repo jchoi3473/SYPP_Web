@@ -55,9 +55,9 @@ export class CreateEditChecklist extends Component {
         })
         if(this.props.Checklist !== ''){
             this.setState({
-                checkListsID : this.props.Checklist.checkListsID,
-                Title : this.props.Checklist.Detail.Title,
-                Time : this.props.Checklist.Detail.Time,
+                checkListsID : this.props.Checklist.checklistID,
+                Title : this.props.Checklist.type,
+                // Time : this.props.Checklist.Detail.Time,
                 editorState : this.props.editorState,
                 checkboxState : this.props.checkboxState
             })
@@ -73,10 +73,10 @@ export class CreateEditChecklist extends Component {
         if(this.state.editorState !== ''){
             for(var i=0;i<this.state.editorState._immutable.currentContent.blockMap._list._tail.array.length;i++){
                 newNoteContent.push({
-                    checklistID : this.state.editorState._immutable.currentContent.blockMap._list._tail.array[i][0],
-                    Type : this.state.editorState._immutable.currentContent.blockMap._list._tail.array[i][1].text,
-                    Submission : this.state.checkboxState[i].checkboxBoolean,
-                    Files : 'null'
+                    // checklistID : this.state.editorState._immutable.currentContent.blockMap._list._tail.array[i][0],
+                    title : this.state.editorState._immutable.currentContent.blockMap._list._tail.array[i][1].text,
+                    isChecked : this.state.checkboxState[i].checkboxBoolean,
+                    contents : 'null'
                 })
             }
         }
@@ -86,15 +86,12 @@ export class CreateEditChecklist extends Component {
             for(var i=0;i<this.props.apps.length;i++){
                 if(this.props.apps[i].applicationID === this.props.applicationID){
                     const key = genKey()
-                    apps[i].Checklists.push(  
+                    apps[i].checklists.push(  
                         {
-                            checkListsID: key,
-                            Detail: {
-                                checkListsID: key,
-                                Time: new Date(),
-                                Title: this.state.Title
-                            },
-                            Contents: newNoteContent
+                            checklistsID: key,
+                            submission : false, 
+                            type : this.state.Title,
+                            files: newNoteContent
                         }
                     )
                 }
@@ -106,19 +103,15 @@ export class CreateEditChecklist extends Component {
             this.props.handleCheckbox(this.state.checkboxState)
             var apps = this.props.apps 
             for(var i=0;i<this.props.apps.length;i++){
-                console.log("this one is triggeredd?")
                 if(this.props.apps[i].applicationID === this.props.applicationID){
-                    for(var j=0; j<this.props.apps[i].Checklists.length;j++){
-                        if(this.props.apps[i].Checklists[j].checkListsID === this.state.checkListsID){
-                            apps[i].Checklists[j] = {
-                                checkListsID: this.state.noteID,
-                                Detail: {
-                                    checkListsID: this.state.noteID,
-                                    Time: new Date(),
-                                    Title: this.state.Title 
-                                },
-                                Contents: newNoteContent
-                            }
+                    for(var j=0; j<this.props.apps[i].checklists.length;j++){
+                        if(this.props.apps[i].checklists[j].checklistID === this.state.checkListsID){
+                            apps[i].checklists[j] = {
+                                checklistsID: this.state.checkListsID,
+                                submission : false,
+                                type : this.state.Title,
+                                files: newNoteContent
+                            }                
                         }
                     }
                 }
@@ -133,10 +126,9 @@ export class CreateEditChecklist extends Component {
             for(var i=0;i<this.props.companies.length;i++){
                 if(this.props.companies[i].companyID === this.props.companyID){
                     const key = genKey()
-                    console.log("this one is triggeredd...")
                     companies[i].Checklists.push(  
                         {
-                            checkListsID: key,
+                            checklistID: key,
                             Detail: {
                                 checkListsID: key,
                                 Time: new Date(),
@@ -156,9 +148,9 @@ export class CreateEditChecklist extends Component {
                 console.log("this one is triggeredd?")
                 if(this.props.companies[i].companyID === this.props.companyID){
                     for(var j=0; j<this.props.companies[i].Checklists.length;j++){
-                        if(this.props.companies[i].Checklists[j].checkListsID === this.state.checkListsID){
+                        if(this.props.companies[i].Checklists[j].checklistID === this.state.checkListsID){
                             companies[i].Checklists[j] = {
-                                checkListsID: this.state.checkListsID,
+                                checklistID: this.state.checkListsID,
                                 Detail: {
                                     checkListsID: this.state.checkListsID,
                                     Time: new Date(),
@@ -194,7 +186,6 @@ export class CreateEditChecklist extends Component {
       
     _handleChange = (editorState) => {      
             this.setState({editorState});
-            console.log("editor state = ")
             if(this.state.editorState!==''){
             if(this.state.editorState._immutable.currentContent.blockMap._list._tail.array.length > this.state.checkboxState.length){
                 var tempCheckbox = 
@@ -253,7 +244,7 @@ export class CreateEditChecklist extends Component {
                 />
              <div className ="sypp-event-seperateLine"></div>
             <div className = "sypp-ApplicationDetailChecklists-container" style={{overflowY: 'scroll', height: '340px'}}>
-            <div className = "sypp-CheckList-Container" style = {{"height":""+this.state.checkboxState.length*16.35}}>
+            <div className = "sypp-CheckList-Container">
             {
                 this.state.checkboxState.length === 0 ? 
                 <div className = "sypp-emptybody-checkbox-container">
@@ -270,6 +261,7 @@ export class CreateEditChecklist extends Component {
                 </div>
                 :this.state.checkboxState.map((checkbox) => (
                     // <FormGroup row>
+                    <div className = "sypp-checkbox-container">
                     <FormControlLabel 
                     className = "sypp-FormRoot"
                     control = {
@@ -280,14 +272,14 @@ export class CreateEditChecklist extends Component {
                     checked = {checkbox.checkboxBoolean} 
                     onChange = {() => this.onCheckBoxClick(checkbox.checklistID)}/>}
                     />
-                    // </FormGroup>
+                    </div>
                 ))
             }
             </div>
             <div className = "sypp-Editor-Container">
                 <Editor 
                 toolbarHidden
-                editorClassName="sypp-editor-class"
+                editorClassName="sypp-editor-class sypp-checkbox-editorState"
                 placeholder = "Checklist Items"
                 editorState={this.state.editorState}
                 onEditorStateChange={this._handleChange}

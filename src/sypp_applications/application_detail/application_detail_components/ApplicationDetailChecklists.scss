@@ -9,9 +9,7 @@
     display: flex;
     // justify-content: center;
     flex-direction: column;
-    justify-content: space-evenly;
     width: 20px;
-    // margin-top: -1px;
 }
 .sypp-Editor-Container{
     display: inline block;
@@ -38,4 +36,9 @@
     font-family: Assistant;
     font-style: normal;
     font-weight: normal;
+}
+.sypp-checkbox-container{
+    display: flex;
+    align-items: center;
+    height: 12px;
 }

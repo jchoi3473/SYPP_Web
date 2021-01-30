@@ -31,20 +31,21 @@ class ApplicationDetailChecklists extends React.Component {
         super(props);
         const contentBlocksArray = []
         const checkboxArray =[]
-        for (var i=0;i<this.props.Checklist.Contents.length;i++){
-            if(this.props.Checklist.Contents.length !== 0){
+        for (var i=0;i<this.props.Checklist.files.length;i++){
+          var checklistID = genKey();
+            if(this.props.Checklist.files.length !== 0){
                 contentBlocksArray.push(
                     new ContentBlock({
-                        key: this.props.Checklist.Contents[i].checklistID,
+                        key: checklistID,
                         type: 'unstyled',
                         depth: 0,
-                        text: this.props.Checklist.Contents[i].Type
+                        text: this.props.Checklist.files[i].title
                       })
                 )
             }
             checkboxArray.push({
-                checklistID : this.props.Checklist.Contents[i].checklistID,
-                checkboxBoolean: this.props.Checklist.Contents[i].Submission
+                checklistID : checklistID,
+                checkboxBoolean: this.props.Checklist.files[i].isChecked
             })
         }
           this.state = {
@@ -94,15 +95,15 @@ class ApplicationDetailChecklists extends React.Component {
         return (
           <div className="sypp-ApplicationDetailNote-container">
             <div className="sypp-ApplicationDetailNote-title-container">
-            <div className = "sypp-applicationDetailTextTitle">{this.props.Checklist.Detail.Title}</div>
+            <div className = "sypp-applicationDetailTextTitle">{this.props.Checklist.type}</div>
             </div>
             <div className = "sypp-ApplicationDetailChecklists-container">
-            <div className = "sypp-CheckList-Container" style = {{"height":""+this.state.checkboxState.length*16.363333333}}>
+            <div className = "sypp-CheckList-Container">
             {
                 // className = "Checkbox-padding checkbox-root checkboxIcomButton-root Icon-root Checkbox-Checked" 
                 this.state.checkboxState.map((checkbox) => (
-                    // <FormGroup row>
-                    <FormControlLabel 
+                  <div className = "sypp-checkbox-container">
+                  <FormControlLabel 
                     className = "sypp-FormRoot"
                     control = {
                     <Checkbox 
@@ -112,14 +113,14 @@ class ApplicationDetailChecklists extends React.Component {
                     checked = {checkbox.checkboxBoolean} 
                     onChange = {() => this.onCheckBoxClick(checkbox.checklistID)}/>}
                     />
-                    // </FormGroup>
+                  </div> 
                 ))
             }
             </div>
             <div className = "sypp-Editor-Container" onClick = {this.handleOpen}>
             {
-              this.props.Checklist.Contents.map((data) => (
-                <div className = "sypp-checklist-body">{data.Type}</div>
+              this.props.Checklist.files.map((data) => (
+                <div className = "sypp-checklist-body">{data.title}</div>
               ))
             }
             </div>

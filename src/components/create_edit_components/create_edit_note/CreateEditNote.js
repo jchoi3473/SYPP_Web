@@ -46,8 +46,8 @@ export class CreateEditNote extends Component {
         if(this.props.Note !== ''){
             this.setState({
                 noteID: this.props.Note.noteID,
-                noteName : this.props.Note.Detail.Title,
-                noteDate : this.props.Note.Detail.Time,
+                noteName : this.props.Note.detail.title,
+                noteDate : this.props.Note.detail.time,
                 editorState : this.props.editorState
             })
         }
@@ -62,8 +62,8 @@ export class CreateEditNote extends Component {
         if(this.state.editorState !== ''){
             var newNoteContent = [{
             noteContentsID : this.state.editorState._immutable.currentContent.blockMap._list._tail.array[0][0],
-            Header : this.state.editorState._immutable.currentContent.blockMap._list._tail.array[0][1].text,
-            Contents_Text : []
+            header : this.state.editorState._immutable.currentContent.blockMap._list._tail.array[0][1].text,
+            contents_Text : []
         }];
             var tracker = 0;
             for(var i=1;i<this.state.editorState._immutable.currentContent.blockMap._list._tail.array.length;i++){
@@ -71,12 +71,12 @@ export class CreateEditNote extends Component {
                     tracker++;
                     newNoteContent.push({
                     noteContentsID : this.state.editorState._immutable.currentContent.blockMap._list._tail.array[i][0],
-                    Header : this.state.editorState._immutable.currentContent.blockMap._list._tail.array[i][1].text,
-                    Contents_Text : []
+                    header : this.state.editorState._immutable.currentContent.blockMap._list._tail.array[i][1].text,
+                    contents_Text : []
                     })
                 }
                 else{
-                    newNoteContent[tracker].Contents_Text.push(this.state.editorState._immutable.currentContent.blockMap._list._tail.array[i][1].text)
+                    newNoteContent[tracker].contents_Text.push(this.state.editorState._immutable.currentContent.blockMap._list._tail.array[i][1].text)
                 }
             }
         }
@@ -87,15 +87,15 @@ export class CreateEditNote extends Component {
             for(var i=0;i<this.props.apps.length;i++){
                 if(this.props.apps[i].applicationID === this.props.applicationID){
                     const key = genKey()
-                    apps[i].Notes.push(  
+                    apps[i].notes.push(  
                         {
                             noteID: key,
-                            Detail: {
+                            detail: {
                                 noteID: key,
-                                Time: this.state.noteDate,
-                                Title: this.state.noteName
+                                time: this.state.noteDate,
+                                title: this.state.noteName
                             },
-                            Contents: newNoteContent
+                            contents: newNoteContent
                         }
                     )
                 }
@@ -106,18 +106,17 @@ export class CreateEditNote extends Component {
         else if(this.state.noteID !== '' && this.state.type ==='application'){
             var apps = this.props.apps 
             for(var i=0;i<this.props.apps.length;i++){
-                console.log("this one is triggeredd?")
                 if(this.props.apps[i].applicationID === this.props.applicationID){
-                    for(var j=0; j<this.props.apps[i].Notes.length;j++){
-                        if(this.props.apps[i].Notes[j].noteID === this.state.noteID){
-                            apps[i].Notes[j] = {
+                    for(var j=0; j<this.props.apps[i].notes.length;j++){
+                        if(this.props.apps[i].notes[j].noteID === this.state.noteID){
+                            apps[i].notes[j] = {
                                 noteID: this.state.noteID,
-                                Detail: {
+                                detail: {
                                     noteID: this.state.noteID,
-                                    Time: this.state.noteDate,
-                                    Title: this.state.noteName
+                                    time: this.state.noteDate,
+                                    title: this.state.noteName
                                 },
-                                Contents: newNoteContent
+                                contents: newNoteContent
                             }
                         }
                     }
@@ -128,6 +127,7 @@ export class CreateEditNote extends Component {
             this.props.onSaveNote()
         }
         //company detail fixing part, when it doesnt exist 
+        
         else if(this.state.noteID === '' && this.state.type ==='company'){
             var companies = this.props.companies
             for(var i=0;i<this.props.companies.length;i++){
