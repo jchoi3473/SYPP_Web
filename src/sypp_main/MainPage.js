@@ -2,10 +2,13 @@ import React, { Component, useState } from 'react';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
+
+import CompanyMain from './../sypp_companies/CompanyMain'
 import ApplicationsMain from './../sypp_applications/ApplicationsMain'
-import './radio/RadioButtons.scss';
 import CalendarMain from './../sypp_calendar/CalendarMain'
+
 import './MainPage.scss'
+import './radio/RadioButtons.scss';
 
 function MainPage() {
     const [radioValue, setRadioValue] = useState('0');
@@ -38,7 +41,7 @@ function MainPage() {
       else if(radioValue === '2'){
         return(
             <div>
-
+              <CompanyMain/>
             </div>
         )
       }  else if(radioValue === '3'){

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ApplicationWeekview from './ApplicationWeekview'
+import CalendarWeekview from './../sypp_calendar/CalendarWeekview'
 import './ApplicationsMain.scss'
 import {setApps} from './../redux/application-reducer/applicationAction'
 import {connect} from 'react-redux'
@@ -41,7 +41,7 @@ class ApplicationsMain extends Component {
             <div className = "sypp-applicationMain-Container">
                 <button onClick = {this.onClickToggleDeadline}>Hide Weekly Deadlines</button>
                 {this.state.toggleDeadline?
-                        <ApplicationWeekview/>:undefined
+                        <CalendarWeekview/>:undefined
                 }
                 {this.state.toggleDeadline?
                     <div className = "sypp-applicationMain-subContainer">

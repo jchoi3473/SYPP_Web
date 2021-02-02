@@ -33,6 +33,11 @@ class ApplicationDetail extends Component {
             radioValue : e.currentTarget.value
         })
     }
+    setRadioValue = (value) =>{
+        this.setState({
+            radioValue : value
+        })
+    }
 
     render(){
         var app = ''
@@ -75,10 +80,10 @@ class ApplicationDetail extends Component {
             {
                 !this.props.extended?
                 <div style={{overflowY: 'scroll', height: '490px'}}> 
-                    <ApplicationDetailComponents applicationID = {this.props.applicationID} radioValue = {this.state.radioValue} applicationDetail = {app}/>
+                    <ApplicationDetailComponents setRadioValue = {this.setRadioValue} applicationID = {this.props.applicationID} radioValue = {this.state.radioValue} applicationDetail = {app}/>
                 </div>:
                 <div style={{overflowY: 'scroll', height: '680px'}}>
-                    <ApplicationDetailComponents applicationID = {this.props.applicationID} radioValue = {this.state.radioValue} applicationDetail = {app}/>
+                    <ApplicationDetailComponents setRadioValue = {this.setRadioValue} applicationID = {this.props.applicationID} radioValue = {this.state.radioValue} applicationDetail = {app}/>
                 </div>
             }
             
