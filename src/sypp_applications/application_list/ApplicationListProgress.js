@@ -113,7 +113,7 @@ export class Progress extends Component{
                 <div className="sypp-taskEntity">Task</div>
                 <div className="sypp-taskEntity">Result</div>
             </div>
-                <div className = "sypp-applicationList-container" style={{overflowY: 'scroll', height: '400px'}}>
+                <div className = "sypp-applicationList-container" style={this.props.extended?{overflowY: 'scroll', height: '600px'}:{overflowY: 'scroll', height: '400px'}}>
                 {
                 (searchFilteredProgress.length > 0)?
                 searchFilteredProgress.map((data) => (
@@ -135,7 +135,6 @@ export class Progress extends Component{
                         </div>
                         )):undefined
                 }
-
                 </div>
             </div>
         )

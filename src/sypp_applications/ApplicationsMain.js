@@ -46,7 +46,7 @@ class ApplicationsMain extends Component {
                 {this.state.toggleDeadline?
                     <div className = "sypp-applicationMain-subContainer">
                         <div className = "sypp-applicationMain-list">
-                            <ApplicationList onClickProgressAll = {this.onClickProgressAll}/>
+                            <ApplicationList onClickProgressAll = {this.onClickProgressAll} extended = {false}/>
                         </div>
                         <div className = "sypp-applicationMain-detail">
                             <ApplicationDetail applicationID = {this.state.applicationID} extended = {false}/>
@@ -54,7 +54,7 @@ class ApplicationsMain extends Component {
                         </div> :
                     <div className = "sypp-applicationMain-subContainer">
                         <div className = "sypp-applicationMain-list-extended">
-                            <ApplicationList onClickProgressAll = {this.onClickProgressAll}/>
+                            <ApplicationList onClickProgressAll = {this.onClickProgressAll} extended = {true}/>
                         </div>
                         <div className = "sypp-applicationMain-detail-extended">
                         <ApplicationDetail applicationID = {this.state.applicationID} extended = {true}/>

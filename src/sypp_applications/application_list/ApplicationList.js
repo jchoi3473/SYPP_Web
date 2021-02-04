@@ -66,7 +66,7 @@ class ApplicationList extends Component {
             <div>
                 {categoryDivided()}
                 <ApplicationListComponents options = {radioValue} onChange = {this.onChange}/>
-                <ApplicationListProgress onClickProgressAll = {this.props.onClickProgressAll}/>
+                <ApplicationListProgress onClickProgressAll = {this.props.onClickProgressAll} extended = {this.props.extended}/>
                 <div className = 'sypp-modalButton'>
                     <ModalBox/>
                 </div>

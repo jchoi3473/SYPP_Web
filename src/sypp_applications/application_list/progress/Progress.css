@@ -3,7 +3,6 @@
     text-align: center;
 }
 .sypp-progressLine{
-    display: inline-flex;
     margin: 0 auto;
     width: 265px;
     height: 0.7px;
@@ -65,7 +64,7 @@
 }  
 .sypp-date-font{
     font-size: 5px;
-    margin: 0;
+    margin: -5px;
     padding: 0;
     color: rgba(255,255,255,.6);
 }
