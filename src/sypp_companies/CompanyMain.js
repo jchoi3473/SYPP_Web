@@ -28,6 +28,7 @@ class CompanyMain extends Component {
         this.setState({
             companyID : companyID
         })
+        this.setState({})
         console.log(this.state.companyID)
     }
 

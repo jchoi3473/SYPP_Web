@@ -14,11 +14,33 @@ class ConversationDetail extends Component {
         };
     }
     componentDidMount(){
-      console.log("previous editor State???")
-      console.log(this.props.editorState)
-        if(this.props.editorState !== ''){
+        if(this.props.FollowUp !== ''){
+          const contentBlocksArray = []
+            for (var i=0;i<this.props.FollowUp.description.length;i++){
+                if(this.props.FollowUp.description.length !== 0){
+                    contentBlocksArray.push(
+                        new ContentBlock({
+                            key: this.props.FollowUp.description[i].noteContentsID,
+                            type: 'unordered-list-item',
+                            depth: 0,
+                            text: this.props.FollowUp.description[i].header
+                        })
+                    )
+                    for(var j=0;j<this.props.FollowUp.description[i].contents_Text.length;j++){
+                        contentBlocksArray.push(
+                            new ContentBlock({
+                                key: genKey(),
+                                type: 'unordered-list-item',
+                                depth: 1,
+                                text: this.props.FollowUp.description[i].contents_Text[j]
+                            })
+                        )
+                    }
+                }
+            }
+
             this.setState({
-                editorState : this.props.editorState
+                editorState : EditorState.createWithContent(ContentState.createFromBlockArray(contentBlocksArray))
             })
         }
     }

@@ -21,52 +21,87 @@ import CreateEditChecklist from './../../../components/create_edit_components/cr
 import {getDefaultKeyBinding, KeyBindingUtil, getSelection, getCurrentContent, editorState, changeDepth, keyBindingFn} from 'draft-js';
 import {connect} from 'react-redux'
 import "bootstrap/dist/css/bootstrap.min.css";
+import {setCompany} from './../../../redux/company-reducer/companyAction'
+import {setApps} from './../../../redux/application-reducer/applicationAction'
 
 
   const {hasCommandModifier} = KeyBindingUtil;
-  
+  const mapStatetoProps = state => {
+    return{
+        companies: state.companies.companies,
+        apps: state.application.applications,
+        // pending: state.progress.isPending,
+        // categories: state.categories.categories, 
+        // applicationDetail : state.applicationDetail.application
+    }
+  }
+  const mapDispatchToProps= dispatch =>{
+    return {
+        setApps : (applications) => dispatch(setApps(applications)),
+        setCompany : (companies) => dispatch(setCompany(companies)),
+    }
+  }
 
 class ApplicationDetailChecklists extends React.Component {
     constructor(props) {
         super(props);
-        const contentBlocksArray = []
-        const checkboxArray =[]
-        for (var i=0;i<this.props.Checklist.files.length;i++){
-          var checklistID = genKey();
-            if(this.props.Checklist.files.length !== 0){
-                contentBlocksArray.push(
-                    new ContentBlock({
-                        key: checklistID,
-                        type: 'unstyled',
-                        depth: 0,
-                        text: this.props.Checklist.files[i].title
-                      })
-                )
-            }
-            checkboxArray.push({
-                checklistID : checklistID,
-                checkboxBoolean: this.props.Checklist.files[i].isChecked
-            })
-        }
-          this.state = {
-          editorState: EditorState.createWithContent(ContentState.createFromBlockArray(contentBlocksArray)),
-          checkboxState : checkboxArray,
+        this.state = {
+          editorState: '',
+          checkboxState : '',
           show : false
         };
       }
-    
+
     //API calls here, need to save the checkbox status to the application
-    onCheckBoxClick = (checkboxID) => {
-        var tempCheckbox = this.state.checkboxState
-        for(var i=0;i<this.state.checkboxState.length;i++){
-            if(checkboxID === this.state.checkboxState[i].checklistID){
-                tempCheckbox[i].checkboxBoolean = !tempCheckbox[i].checkboxBoolean
+    // onCheckBoxClick = (checkboxID) => {
+    //     var tempCheckbox = this.state.checkboxState
+    //     for(var i=0;i<this.state.checkboxState.length;i++){
+    //         if(checkboxID === this.state.checkboxState[i].checklistID){
+    //             tempCheckbox[i].checkboxBoolean = !tempCheckbox[i].checkboxBoolean
+    //         }
+    //         this.setState({
+    //             checkboxState : tempCheckbox 
+    //         })
+    //     }
+    // }
+
+    onCheckBoxClick = (checkboxArray, checklistID) =>{
+      if(this.props.type === 'application'){
+        var apps = this.props.apps
+        for(var i=0;i<this.props.apps.length;i++){
+          if(this.props.apps[i].applicationID === this.props.applicationID){
+            for(var j=0;j<this.props.apps[i].checklists.length;j++){
+              if(this.props.apps[i].checklists[j].checklistID === this.props.Checklist.checklistID){
+                for(var k=0;k<this.props.apps[i].checklists[j].files.length;k++){
+                  if(checkboxArray[k].checklistID === checklistID){
+                    apps[i].checklists[j].files[k].isChecked = !apps[i].checklists[j].files[k].isChecked
+                  }
+              }
             }
-            this.setState({
-                checkboxState : tempCheckbox 
-            })
+          }
         }
       }
+      this.props.setApps(apps)
+      }
+      if(this.props.type === 'company'){
+        var companies = this.props.companies
+        for(var i=0;i<this.props.companies.length;i++){
+          if(this.props.companies[i].companyID === this.props.companyID){
+            for(var j=0;j<this.props.companies[i].checklists.length;j++){
+              if(this.props.companies[i].checklists[j].checklistID === this.props.Checklist.checklistID){
+                for(var k=0;k<this.props.companies[i].checklists[j].files.length;k++){
+                  if(checkboxArray[k].checklistID === checklistID){
+                  companies[i].checklists[j].files[k].isChecked = !companies[i].checklists[j].files[k].isChecked
+                  }
+              }
+            }
+          }
+        }
+      }
+      this.props.setCompany(companies)
+    }
+    this.setState({})
+  }
     _handleChange = (editorState) =>{
       this.setState({
         editorState: editorState
@@ -89,6 +124,37 @@ class ApplicationDetailChecklists extends React.Component {
         checkboxState : checkboxState
       })
     }
+
+    checkboxDisplay = () =>{
+      var checkboxArray =[]
+      for (var i=0;i<this.props.Checklist.files.length;i++){
+        var checklistID = genKey();
+          checkboxArray.push({
+            checklistID : checklistID,
+            checkboxBoolean: this.props.Checklist.files[i].isChecked
+        })
+      }
+      return(
+        <div>
+        {
+          checkboxArray.map((checkbox) => (
+            <div className = "sypp-checkbox-container">
+            <FormControlLabel 
+              className = "sypp-FormRoot"
+              control = {
+              <Checkbox 
+              icon=  {<FontAwesomeIcon className = "sypp-CheckBox-icon" icon={faSquare}/> }
+              checkedIcon= {<FontAwesomeIcon className = "sypp-CheckBox-icon sypp-checked" icon={faCheckSquare}/> }
+              className = "sypp-Checkbox-padding sypp-Checkbox-padding2"
+              checked = {checkbox.checkboxBoolean} 
+              onChange = {() => this.onCheckBoxClick(checkboxArray, checkbox.checklistID)}/>}
+              />
+            </div> 
+          ))
+        }
+        </div>
+      )
+    }
      
     
       render() {
@@ -99,23 +165,9 @@ class ApplicationDetailChecklists extends React.Component {
             </div>
             <div className = "sypp-ApplicationDetailChecklists-container">
             <div className = "sypp-CheckList-Container">
-            {
-                // className = "Checkbox-padding checkbox-root checkboxIcomButton-root Icon-root Checkbox-Checked" 
-                this.state.checkboxState.map((checkbox) => (
-                  <div className = "sypp-checkbox-container">
-                  <FormControlLabel 
-                    className = "sypp-FormRoot"
-                    control = {
-                    <Checkbox 
-                    icon=  {<FontAwesomeIcon className = "sypp-CheckBox-icon" icon={faSquare}/> }
-                    checkedIcon= {<FontAwesomeIcon className = "sypp-CheckBox-icon sypp-checked" icon={faCheckSquare}/> }
-                    className = "sypp-Checkbox-padding sypp-Checkbox-padding2"
-                    checked = {checkbox.checkboxBoolean} 
-                    onChange = {() => this.onCheckBoxClick(checkbox.checklistID)}/>}
-                    />
-                  </div> 
-                ))
-            }
+              {
+                  this.checkboxDisplay()
+              }
             </div>
             <div className = "sypp-Editor-Container" onClick = {this.handleOpen}>
             {
@@ -142,4 +194,4 @@ class ApplicationDetailChecklists extends React.Component {
         );
       }
 }
-export default connect(null, null)(ApplicationDetailChecklists)
+export default connect(mapStatetoProps, mapDispatchToProps)(ApplicationDetailChecklists)

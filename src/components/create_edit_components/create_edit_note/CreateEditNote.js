@@ -16,7 +16,7 @@ import '../CreateEditDetail.scss'
 const mapStatetoProps = state => {
     return{
         apps: state.application.applications,       
-        // companies: state.companies.companies,
+        companies: state.companies.companies,
     }
   }
   
@@ -40,6 +40,35 @@ export class CreateEditNote extends Component {
     //componentDidMount will determine if this is a new Event
     //if this is not a new event, will call exisitng features and save them to the state
     componentDidMount(){
+        var editorState = ''
+        if(this.props.Note !== ''){
+            const contentBlocksArray = []
+            for (var i=0;i<this.props.Note.contents.length;i++){
+                if(this.props.Note.contents.length !== 0){
+                    contentBlocksArray.push(
+                        new ContentBlock({
+                            key: this.props.Note.contents[i].noteContentsID,
+                            type: 'unordered-list-item',
+                            depth: 0,
+                            text: this.props.Note.contents[i].header
+                          })
+                    )
+                    for(var j=0;j<this.props.Note.contents[i].contents_Text.length;j++){
+                        contentBlocksArray.push(
+                            new ContentBlock({
+                                key: genKey(),
+                                type: 'unordered-list-item',
+                                depth: 1,
+                                text: this.props.Note.contents[i].contents_Text[j]
+                              })
+                        )
+                    }
+                }
+            }
+              this.setState({
+              editorState: EditorState.createWithContent(ContentState.createFromBlockArray(contentBlocksArray)),    
+            });
+        }
         this.setState({
             type : this.props.type
         })
@@ -48,7 +77,6 @@ export class CreateEditNote extends Component {
                 noteID: this.props.Note.noteID,
                 noteName : this.props.Note.detail.title,
                 noteDate : this.props.Note.detail.time,
-                editorState : this.props.editorState
             })
         }
     }

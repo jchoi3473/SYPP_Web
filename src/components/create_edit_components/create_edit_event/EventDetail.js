@@ -14,10 +14,33 @@ class EventDetail extends Component {
         };
     }
     componentDidMount(){
-        if(this.props.editorState !== ''){
-            this.setState({
-                editorState : this.props.editorState
-            })
+        if(this.props.Event !== ''){
+          const contentBlocksArray = []
+          for (var i=0;i<this.props.Event.contents.length;i++){
+              if(this.props.Event.contents.length !== 0){
+                  contentBlocksArray.push(
+                      new ContentBlock({
+                          key: this.props.Event.contents[i].noteContentsID,
+                          type: 'unordered-list-item',
+                          depth: 0,
+                          text: this.props.Event.contents[i].header
+                        })
+                  )
+                  for(var j=0;j<this.props.Event.contents[i].contents_Text.length;j++){
+                      contentBlocksArray.push(
+                          new ContentBlock({
+                              key: genKey(),
+                              type: 'unordered-list-item',
+                              depth: 1,
+                              text: this.props.Event.contents[i].contents_Text[j]
+                            })
+                      )
+                  }
+              }
+          }
+          this.setState({
+            editorState: EditorState.createWithContent(ContentState.createFromBlockArray(contentBlocksArray)),
+          });
         }
     }
     onSave = () =>{

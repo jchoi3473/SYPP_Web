@@ -8,7 +8,7 @@ import 'draft-js/dist/Draft.css';
 import { v4 as uuidv4 } from 'uuid';
 import {connect} from 'react-redux'
 import {setApps} from './../../../redux/application-reducer/applicationAction'
-// import {setCompany} from './../../redux/company-reducer/companyAction'
+import {setCompany} from './../../../redux/company-reducer/companyAction'
 import './../create_edit_event/CreateEvent.scss'
 import './../CreateEditDetail.scss'
 
@@ -24,14 +24,14 @@ const mapStatetoProps = state => {
         apps: state.application.applications,
         // pending: state.progress.isPending,
         // categories: state.categories.categories, 
-        // companies: state.companies.companies,
+        companies: state.companies.companies,
     }
   }
   
   const mapDispatchToProps= dispatch =>{
     return {
         setApps : (applications) => dispatch(setApps(applications)),
-        // setCompany : (companies) => dispatch(setCompany(companies)),
+        setCompany : (companies) => dispatch(setCompany(companies)),
 
     }
   }
@@ -50,19 +50,42 @@ export class CreateEditChecklist extends Component {
     //componentDidMount will determine if this is a new Event
     //if this is not a new event, will call exisitng features and save them to the state
     componentDidMount(){
+        console.log(this.props.companyID)
+        console.log(this.props.Checklist)
+        console.log(this.props.checkboxState)
+
         this.setState({
             type : this.props.type
         })
         if(this.props.Checklist !== ''){
+            const contentBlocksArray = []
+            const checkboxArray =[]
+            for (var i=0;i<this.props.Checklist.files.length;i++){
+              var checklistID = genKey();
+                if(this.props.Checklist.files.length !== 0){
+                    contentBlocksArray.push(
+                        new ContentBlock({
+                            key: checklistID,
+                            type: 'unstyled',
+                            depth: 0,
+                            text: this.props.Checklist.files[i].title
+                          })
+                    )
+                }
+                checkboxArray.push({
+                    checklistID : checklistID,
+                    checkboxBoolean: this.props.Checklist.files[i].isChecked
+                })
+            }
             this.setState({
                 checkListsID : this.props.Checklist.checklistID,
                 Title : this.props.Checklist.type,
-                // Time : this.props.Checklist.Detail.Time,
-                editorState : this.props.editorState,
-                checkboxState : this.props.checkboxState
+                editorState : EditorState.createWithContent(ContentState.createFromBlockArray(contentBlocksArray)),
+                checkboxState : checkboxArray
             })
         }
     }
+
 
 //API CALL HERE
 // //Send Post request, close modal(save button)
@@ -126,15 +149,12 @@ export class CreateEditChecklist extends Component {
             for(var i=0;i<this.props.companies.length;i++){
                 if(this.props.companies[i].companyID === this.props.companyID){
                     const key = genKey()
-                    companies[i].Checklists.push(  
+                    companies[i].checklists.push(  
                         {
                             checklistID: key,
-                            Detail: {
-                                checkListsID: key,
-                                Time: new Date(),
-                                Title: this.state.Title
-                            },
-                            Contents: newNoteContent
+                            submission : false, 
+                            type : this.state.Title,
+                            files: newNoteContent
                         }
                     )
                 }
@@ -145,18 +165,14 @@ export class CreateEditChecklist extends Component {
             this.props.handleCheckbox(this.state.checkboxState)
             var companies = this.props.companies 
             for(var i=0;i<this.props.companies.length;i++){
-                console.log("this one is triggeredd?")
                 if(this.props.companies[i].companyID === this.props.companyID){
-                    for(var j=0; j<this.props.companies[i].Checklists.length;j++){
-                        if(this.props.companies[i].Checklists[j].checklistID === this.state.checkListsID){
-                            companies[i].Checklists[j] = {
+                    for(var j=0; j<this.props.companies[i].checklists.length;j++){
+                        if(this.props.companies[i].checklists[j].checklistID === this.state.checkListsID){
+                            companies[i].checklists[j] = {
                                 checklistID: this.state.checkListsID,
-                                Detail: {
-                                    checkListsID: this.state.checkListsID,
-                                    Time: new Date(),
-                                    Title: this.state.Title
-                                },
-                                Contents: newNoteContent
+                                submission : false,
+                                type : this.state.Title,
+                                files: newNoteContent
                             }
                         }
                     }

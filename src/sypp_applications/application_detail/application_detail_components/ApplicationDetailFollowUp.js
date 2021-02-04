@@ -23,35 +23,6 @@ class ApplicationDetailFollowUp extends React.Component {
             editorState : ''
         };
     }
-    componentDidMount(){
-        const contentBlocksArray = []
-        for (var i=0;i<this.props.FollowUp.description.length;i++){
-            if(this.props.FollowUp.description.length !== 0){
-                console.log("Was it ever triggerd?")
-                contentBlocksArray.push(
-                    new ContentBlock({
-                        key: this.props.FollowUp.description[i].noteContentsID,
-                        type: 'unordered-list-item',
-                        depth: 0,
-                        text: this.props.FollowUp.description[i].header
-                    })
-                )
-                for(var j=0;j<this.props.FollowUp.description[i].contents_Text.length;j++){
-                    contentBlocksArray.push(
-                        new ContentBlock({
-                            key: genKey(),
-                            type: 'unordered-list-item',
-                            depth: 1,
-                            text: this.props.FollowUp.description[i].contents_Text[j]
-                        })
-                    )
-                }
-            }
-        }
-        this.setState({
-            editorState : EditorState.createWithContent(ContentState.createFromBlockArray(contentBlocksArray))
-        })
-    }
     _handleChange = (editorState) =>{
         this.setState({
             editorState: editorState
@@ -119,7 +90,7 @@ class ApplicationDetailFollowUp extends React.Component {
             >
                 <div className = 'sypp-create-detail-modal-container'>
                     <button className ="sypp-button-close" onClick={this.handleClose}>X</button>
-                    <CreateEditConversation _handleChange = {this._handleChange} editorState = {this.state.editorState} onSaveConversation = {this.props.onSaveConversation} FollowUp = {this.props.FollowUp} handleClose = {this.handleClose} type ={this.props.type} applicationID = {this.props.applicationID} companyID = {this.props.companyID}/>
+                    <CreateEditConversation _handleChange = {this._handleChange} FollowUp = {this.props.FollowUp} onSaveConversation = {this.props.onSaveConversation} FollowUp = {this.props.FollowUp} handleClose = {this.handleClose} type ={this.props.type} applicationID = {this.props.applicationID} companyID = {this.props.companyID}/>
                 </div>
             </Modal>
         </div>

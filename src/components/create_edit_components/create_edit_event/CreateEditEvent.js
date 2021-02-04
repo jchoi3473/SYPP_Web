@@ -263,6 +263,7 @@ export class CreateEditEvent extends Component {
                             editorState = {this.props.editorState}
                             handleEditorState = {this.handleEditorState}
                             onSaveButton = {this.onSaveButton}
+                            Event = {this.props.Event}
                         />
                     </div>
                 );

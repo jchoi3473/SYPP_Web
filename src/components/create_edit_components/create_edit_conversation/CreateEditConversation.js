@@ -49,13 +49,12 @@ export class CreateEditConversation extends Component {
         this.setState({
             type : this.props.type
         })
-        if(this.props.FollowUp !== ''){
+        if(this.props.FollowUp !== ''){  
             this.setState({
                 followUpID : this.props.FollowUp.followUpID,
                 name : this.props.FollowUp.personnel.firstname,
                 time : this.props.FollowUp.time,
                 position : this.props.FollowUp.personnel.company,
-                editorState : this.props.editorState
             })
         }
 }
@@ -237,9 +236,9 @@ export class CreateEditConversation extends Component {
                             onChangePosition = {this.onChangePosition}
                             handleClose = {this.props.handleClose}
                             time = {this.state.time}
-                            editorState = {this.props.editorState}
                             handleEditorState = {this.handleEditorState}
                             onSaveButton = {this.onSaveButton}
+                            FollowUp = {this.props.FollowUp}
                         />
                     </div>
                 );
