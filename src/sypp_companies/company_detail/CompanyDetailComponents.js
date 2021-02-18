@@ -203,7 +203,7 @@ class CompanyDetailComponents extends Component {
                     )
                 case '1':
                     return (
-                        <div>
+                        <div class = "container" style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>
                             {
                             this.props.companyDetail.events.map((event) =>(
                                 <ApplicationDetailEvents onSaveEventNote = {this.onSaveEventNote} Event = {event} companyID = {this.props.companyID} type ={'company'}/>
@@ -213,7 +213,7 @@ class CompanyDetailComponents extends Component {
                     )
                 case '2':
                     return (
-                        <div>
+                        <div class = "container" style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>
                             {
                             this.props.companyDetail.notes.map((note) =>(
                                 <ApplicationDetailNotes onSaveNote = {this.onSaveNote} Note = {note} companyID = {this.props.companyID} type ={'company'}/>
@@ -223,7 +223,7 @@ class CompanyDetailComponents extends Component {
                     )
                 case '3':
                     return (
-                        <div>
+                        <div class = "container" style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>
                             {
                             this.props.companyDetail.contacts.map((data) => (
                                 <ApplicationDetailContacts onSaveContactNote = {this.onSaveContactNote} contact = {data} companyID = {this.props.companyID} type ={'company'}/>
@@ -233,7 +233,7 @@ class CompanyDetailComponents extends Component {
                     )
                 case '4':
                     return (
-                        <div>
+                        <div class = "container" style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>
                             {
                             this.props.companyDetail.followUps.map((FollowUp) =>(
                                 <ApplicationDetailFollowUp onSaveConversation = {this.onSaveConversation} FollowUp = {FollowUp} companyID = {this.props.companyID} type ={'company'}/>
@@ -243,7 +243,7 @@ class CompanyDetailComponents extends Component {
                     )
                 case '5':
                     return (
-                        <div>
+                        <div class = "container" style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>
                             {
                             this.props.companyDetail.checklists.map((checklist) =>(
                                 <ApplicationDetailChecklists onSaveChecklist = {this.onSaveChecklist} Checklist = {checklist} companyID = {this.props.companyID} type ={'company'}/>
