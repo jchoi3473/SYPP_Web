@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/SYPP_Web_personal/static/css/main.9cb562f0.chunk.css",
-    "main.js": "/SYPP_Web_personal/static/js/main.92643972.chunk.js",
-    "main.js.map": "/SYPP_Web_personal/static/js/main.92643972.chunk.js.map",
-    "runtime-main.js": "/SYPP_Web_personal/static/js/runtime-main.628b8756.js",
-    "runtime-main.js.map": "/SYPP_Web_personal/static/js/runtime-main.628b8756.js.map",
-    "static/css/2.b35eb67f.chunk.css": "/SYPP_Web_personal/static/css/2.b35eb67f.chunk.css",
-    "static/js/2.dcdd7ac2.chunk.js": "/SYPP_Web_personal/static/js/2.dcdd7ac2.chunk.js",
-    "static/js/2.dcdd7ac2.chunk.js.map": "/SYPP_Web_personal/static/js/2.dcdd7ac2.chunk.js.map",
-    "static/js/3.c33b5bc4.chunk.js": "/SYPP_Web_personal/static/js/3.c33b5bc4.chunk.js",
-    "static/js/3.c33b5bc4.chunk.js.map": "/SYPP_Web_personal/static/js/3.c33b5bc4.chunk.js.map",
+    "main.css": "/SYPP_Web_personal/static/css/main.41b0f417.chunk.css",
+    "main.js": "/SYPP_Web_personal/static/js/main.0e48b60c.chunk.js",
+    "main.js.map": "/SYPP_Web_personal/static/js/main.0e48b60c.chunk.js.map",
+    "runtime-main.js": "/SYPP_Web_personal/static/js/runtime-main.a4216541.js",
+    "runtime-main.js.map": "/SYPP_Web_personal/static/js/runtime-main.a4216541.js.map",
+    "static/css/2.e8fd7887.chunk.css": "/SYPP_Web_personal/static/css/2.e8fd7887.chunk.css",
+    "static/js/2.870c5ea1.chunk.js": "/SYPP_Web_personal/static/js/2.870c5ea1.chunk.js",
+    "static/js/2.870c5ea1.chunk.js.map": "/SYPP_Web_personal/static/js/2.870c5ea1.chunk.js.map",
+    "static/js/3.4715dfdf.chunk.js": "/SYPP_Web_personal/static/js/3.4715dfdf.chunk.js",
+    "static/js/3.4715dfdf.chunk.js.map": "/SYPP_Web_personal/static/js/3.4715dfdf.chunk.js.map",
     "index.html": "/SYPP_Web_personal/index.html",
-    "static/css/2.b35eb67f.chunk.css.map": "/SYPP_Web_personal/static/css/2.b35eb67f.chunk.css.map",
-    "static/css/main.9cb562f0.chunk.css.map": "/SYPP_Web_personal/static/css/main.9cb562f0.chunk.css.map",
-    "static/js/2.dcdd7ac2.chunk.js.LICENSE.txt": "/SYPP_Web_personal/static/js/2.dcdd7ac2.chunk.js.LICENSE.txt",
+    "static/css/2.e8fd7887.chunk.css.map": "/SYPP_Web_personal/static/css/2.e8fd7887.chunk.css.map",
+    "static/css/main.41b0f417.chunk.css.map": "/SYPP_Web_personal/static/css/main.41b0f417.chunk.css.map",
+    "static/js/2.870c5ea1.chunk.js.LICENSE.txt": "/SYPP_Web_personal/static/js/2.870c5ea1.chunk.js.LICENSE.txt",
     "static/media/font-awesome.min.css": "/SYPP_Web_personal/static/media/fontawesome-webfont.f691f37e.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.628b8756.js",
-    "static/css/2.b35eb67f.chunk.css",
-    "static/js/2.dcdd7ac2.chunk.js",
-    "static/css/main.9cb562f0.chunk.css",
-    "static/js/main.92643972.chunk.js"
+    "static/js/runtime-main.a4216541.js",
+    "static/css/2.e8fd7887.chunk.css",
+    "static/js/2.870c5ea1.chunk.js",
+    "static/css/main.41b0f417.chunk.css",
+    "static/js/main.0e48b60c.chunk.js"
   ]
 }
