@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/SYPP_Web_personal/static/css/main.d121fbfc.chunk.css",
-    "main.js": "/SYPP_Web_personal/static/js/main.db7df0b2.chunk.js",
-    "main.js.map": "/SYPP_Web_personal/static/js/main.db7df0b2.chunk.js.map",
+    "main.js": "/SYPP_Web_personal/static/js/main.aba41354.chunk.js",
+    "main.js.map": "/SYPP_Web_personal/static/js/main.aba41354.chunk.js.map",
     "runtime-main.js": "/SYPP_Web_personal/static/js/runtime-main.a4216541.js",
     "runtime-main.js.map": "/SYPP_Web_personal/static/js/runtime-main.a4216541.js.map",
     "static/css/2.e8fd7887.chunk.css": "/SYPP_Web_personal/static/css/2.e8fd7887.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.e8fd7887.chunk.css",
     "static/js/2.870c5ea1.chunk.js",
     "static/css/main.d121fbfc.chunk.css",
-    "static/js/main.db7df0b2.chunk.js"
+    "static/js/main.aba41354.chunk.js"
   ]
 }
