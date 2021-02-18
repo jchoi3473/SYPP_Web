@@ -102,7 +102,8 @@ class CalendarMain extends Component {
               Task : this.props.apps[i].tasks[j],
               Time : this.props.apps[i].tasks[j].time,
               type : 'application',
-              id : this.props.apps[i].applicationID
+              id : this.props.apps[i].applicationID,
+              isFavorite : this.props.apps[i].tasks[j].isFavorite
             })
           }    
         }
@@ -152,7 +153,7 @@ class CalendarMain extends Component {
         selected,
         select,
       } = this.props;
-  
+
       for (var i = 0; i < 7; i++) {
         let day = {
             name: date.format("dd").substring(0, 1),
@@ -162,12 +163,10 @@ class CalendarMain extends Component {
             date: date
         };
         days.push(
-          <div className = {"sypp-day-container" + (day.isToday ? " sypp-today" : "")}>
             <Day day={day}
             selected={selected}
-            select={select}/>
-            <CalendarDetail date = {day.date} taskArray = {this.props.taskArray}/>
-          </div>
+            select={select}
+            taskArray = {this.props.taskArray}/>
         );
   
         date = date.clone();
@@ -181,8 +180,21 @@ class CalendarMain extends Component {
       );
     }
   }
+
   
   class Day extends React.Component {
+    constructor(){
+      super();
+      this.state ={
+        favoriteType : ""
+      }
+    }
+    onChangefavoriteType = (favType) =>{
+    
+      this.setState({
+        favoriteType : favType
+      })
+    }
     render() {
       const {
         day,
@@ -197,11 +209,15 @@ class CalendarMain extends Component {
       } = this.props;
   
       return (
-            <span 
+        <div className = {"sypp-day-container" + (day.isToday ? " sypp-today " : " ") + this.state.favoriteType}>
+            {/* <span 
             key={date.toString()} 
             className={"sypp-day" + (isToday ? " today" : "") + (isCurrentMonth ? "" : " sypp-different-month") + (date.isSame(selected) ? " selected" : "")} 
             onClick={()=>select(day)}>{number}
-            </span>
+            </span> */}
+            <CalendarDetail date = {day.date} taskArray = {this.props.taskArray} number = {number} key = {date.toString()} isToday = {isToday} isCurrentMonth = {isCurrentMonth} 
+            selected = {selected} day = {day} select = {select} favoriteType = {this.state.favoriteType} onChangefavoriteType = {this.onChangefavoriteType}/>
+        </div>
       );
     }
   }

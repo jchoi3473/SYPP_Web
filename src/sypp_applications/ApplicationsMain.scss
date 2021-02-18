@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 53px;
+    margin-right: -5px;
 }
 .sypp-weeklyDealine-individual{
     width: 187px;
@@ -46,7 +47,7 @@
     height: 569px;
     background: #242931;
     border-radius: 20px;
-    padding-left: 15px;
+    padding-left: 10px;
     padding-right: 11px;
 }
 .sypp-applicationMain-list-extended{
@@ -62,7 +63,7 @@
     height: 758px;
     background: #242931;
     border-radius: 20px;
-    padding-left: 15px;
+    padding-left: 10px;
     padding-right: 15px;
 }
 
@@ -75,3 +76,29 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+.sypp-calendarweekview-container{
+    display: block;
+    
+}
+.sypp-calendarweekview-button{
+    display: block;
+    margin-left: auto;
+    text-align: center;
+    margin-right: 10px;
+    padding-top: 5px;
+    margin-bottom: 8px;
+    width: 170px;
+    height: 26px;
+    border-radius: 30px;
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    color: #C2DBFF;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    &:hover{
+        background: #C2DBFF;
+        color: #363C46;
+    }
+}   

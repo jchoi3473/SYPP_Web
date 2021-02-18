@@ -142,7 +142,7 @@ class ApplicationDetailComponents extends Component {
             switch(this.props.radioValue){
                 case '0':
                     return (
-                        <div class = "container">
+                        <div class = "container" style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>
                             <div class = "row">
                                 <div class = "col">
                                 {
@@ -254,6 +254,12 @@ class ApplicationDetailComponents extends Component {
                 )
             }
         }
+        else {
+            return(
+                <div class = "container" style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>
+                </div>
+            );
+        }
     }
 
     render(){
@@ -264,7 +270,7 @@ class ApplicationDetailComponents extends Component {
                 <Popup
                 trigger={
                     <button 
-                    className = "sypp-detail-add-button">+</button>
+                    className = {"sypp-detail-add-button" + (this.props.extended?" sypp-detail-add-button-extended":" sypp-detail-add-button-notExtended")}>+</button>
                 }
                 position={'right'}
                 closeOnEscape

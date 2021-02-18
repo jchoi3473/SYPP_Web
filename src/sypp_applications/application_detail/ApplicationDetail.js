@@ -79,11 +79,11 @@ class ApplicationDetail extends Component {
             </ButtonGroup>
             {
                 !this.props.extended?
-                <div style={{overflowY: 'scroll', height: '490px'}}> 
-                    <ApplicationDetailComponents setRadioValue = {this.setRadioValue} applicationID = {this.props.applicationID} radioValue = {this.state.radioValue} applicationDetail = {app}/>
+                <div > 
+                    <ApplicationDetailComponents setRadioValue = {this.setRadioValue} applicationID = {this.props.applicationID} radioValue = {this.state.radioValue} applicationDetail = {app} extended = {this.props.extended}/>
                 </div>:
-                <div style={{overflowY: 'scroll', height: '680px'}}>
-                    <ApplicationDetailComponents setRadioValue = {this.setRadioValue} applicationID = {this.props.applicationID} radioValue = {this.state.radioValue} applicationDetail = {app}/>
+                <div >
+                    <ApplicationDetailComponents setRadioValue = {this.setRadioValue} applicationID = {this.props.applicationID} radioValue = {this.state.radioValue} applicationDetail = {app} extended = {this.props.extended}/>
                 </div>
             }
             

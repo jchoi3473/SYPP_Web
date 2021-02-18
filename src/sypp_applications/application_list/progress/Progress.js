@@ -104,13 +104,13 @@ export class Progress extends Component{
                 <div className="sypp-applicationFirst sypp-completed"  
                 onClick = {() => this.props.handleCompleted(this.props.date, this.props.date.Title)}
                 ></div>
-                <div className="sypp-date-font">{Moment(this.props.date.Time).format('MMM DD')}</div>
+                <div className="sypp-date-font">{Moment(this.props.date.time).format('MMM DD')}</div>
                 </div>:
                 <div>
                 <div className="sypp-applicationFirst sypp-notCompleted" 
                 onClick = {() =>  this.props.handleCompleted(this.props.date, this.props.date.Title)}
                 ></div>
-                <div className="sypp-date-font">{Moment(this.props.date.Time).format('MMM DD')}</div>
+                <div className="sypp-date-font">{Moment(this.props.date.time).format('MMM DD')}</div>
 
                 </div>
                 }

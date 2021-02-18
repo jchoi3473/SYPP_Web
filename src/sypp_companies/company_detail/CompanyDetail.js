@@ -81,11 +81,11 @@ class CompanyDetail extends Component {
             </ButtonGroup>
             {
                 !this.props.extended?
-                <div style={{overflowY: 'scroll', height: '490px'}}> 
-                    <CompanyDetailComponents setRadioValue = {this.setRadioValue} companyID = {this.props.companyID} radioValue = {this.state.radioValue} companyDetail = {company}/>
+                <div> 
+                    <CompanyDetailComponents setRadioValue = {this.setRadioValue} companyID = {this.props.companyID} radioValue = {this.state.radioValue} companyDetail = {company} extended = {this.props.extended}/>
                 </div>:
-                <div style={{overflowY: 'scroll', height: '680px'}}>
-                    <CompanyDetailComponents setRadioValue = {this.setRadioValue} companyID = {this.props.companyID} radioValue = {this.state.radioValue} companyDetail = {company}/>
+                <div>
+                    <CompanyDetailComponents setRadioValue = {this.setRadioValue} companyID = {this.props.companyID} radioValue = {this.state.radioValue} companyDetail = {company} extended = {this.props.extended}/>
                 </div>
             }
             

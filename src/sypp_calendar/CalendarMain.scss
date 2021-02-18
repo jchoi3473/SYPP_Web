@@ -30,6 +30,7 @@
     margin-right: 10px;
     margin-bottom: 11px;
     padding-left: 9px;
+    border: transparent;
 }
 
 .sypp-row{
@@ -74,7 +75,7 @@
 }
 
 .sypp-today{
-    border: 2px solid #C2DBFF;
+    border: 2px solid #C2DBFF !important;
 }
 .sypp-calendarDetail-title{
     font-family: Assistant;
@@ -119,4 +120,11 @@
 }
 .sypp-calendar-star{
     // margin-top: -2px;
+}
+
+.sypp-calendar-favorite-completed{
+    border: 2px solid rgba(148, 206, 75, 0.87) ;
+}
+.sypp-calendar-favorite-notCompleted{
+    border: 2px solid rgba(255, 214, 0, 0.87);
 }

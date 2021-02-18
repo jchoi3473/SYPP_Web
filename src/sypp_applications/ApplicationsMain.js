@@ -39,10 +39,12 @@ class ApplicationsMain extends Component {
     render(){
         return(
             <div className = "sypp-applicationMain-Container">
-                <button onClick = {this.onClickToggleDeadline}>Hide Weekly Deadlines</button>
-                {this.state.toggleDeadline?
-                        <CalendarWeekview/>:undefined
-                }
+                <div className = "sypp-calendarweekview-container">
+                    <div className ="sypp-calendarweekview-button" onClick = {this.onClickToggleDeadline}>Hide Weekly Deadlines</div>
+                    {this.state.toggleDeadline?
+                            <CalendarWeekview/>:undefined
+                    }
+                </div>
                 {this.state.toggleDeadline?
                     <div className = "sypp-applicationMain-subContainer">
                         <div className = "sypp-applicationMain-list">
