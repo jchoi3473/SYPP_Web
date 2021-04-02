@@ -20,7 +20,8 @@ const mapStatetoProps = state => {
 class ApplicationsMain extends Component {
     state = {
         toggleDeadline : true,
-        applicationID : ''
+        applicationID : '',
+        collapsed : false
     }
     onClickToggleDeadline = () =>{
         this.setState({
@@ -36,6 +37,13 @@ class ApplicationsMain extends Component {
         console.log(this.state.applicationID)
     }
 
+    onClickCollapse = () =>{
+        console.log("triggerdd")
+        this.setState({
+            collapsed : !this.state.collapsed
+        })
+    }
+
     render(){
         return(
             <div className = "sypp-applicationMain-Container">
@@ -47,19 +55,23 @@ class ApplicationsMain extends Component {
                 </div>
                 {this.state.toggleDeadline?
                     <div className = "sypp-applicationMain-subContainer">
-                        <div className = "sypp-applicationMain-list">
-                            <ApplicationList onClickProgressAll = {this.onClickProgressAll} extended = {false}/>
-                        </div>
+                        {!this.state.collapsed?
+                            <div className = "sypp-applicationMain-list">
+                                <ApplicationList onClickProgressAll = {this.onClickProgressAll} extended = {false} />
+                            </div>:undefined
+                        }
                         <div className = "sypp-applicationMain-detail">
-                            <ApplicationDetail applicationID = {this.state.applicationID} extended = {false}/>
+                            <ApplicationDetail applicationID = {this.state.applicationID} extended = {false} onClickCollapse = {this.onClickCollapse}/>
                         </div>
                         </div> :
-                    <div className = "sypp-applicationMain-subContainer">
-                        <div className = "sypp-applicationMain-list-extended">
-                            <ApplicationList onClickProgressAll = {this.onClickProgressAll} extended = {true}/>
-                        </div>
+                    <div className = "sypp-applicationMain-subContainer-extended">
+                        {!this.state.collapsed?
+                            <div className = "sypp-applicationMain-list-extended">
+                                <ApplicationList onClickProgressAll = {this.onClickProgressAll} extended = {true} />
+                            </div>:undefined
+                        }
                         <div className = "sypp-applicationMain-detail-extended">
-                        <ApplicationDetail applicationID = {this.state.applicationID} extended = {true}/>
+                        <ApplicationDetail applicationID = {this.state.applicationID} extended = {true} onClickCollapse = {this.onClickCollapse}/>
                         </div>
                     </div>
                 }

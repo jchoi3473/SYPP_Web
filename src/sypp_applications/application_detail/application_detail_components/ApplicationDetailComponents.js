@@ -142,8 +142,9 @@ class ApplicationDetailComponents extends Component {
             switch(this.props.radioValue){
                 case '0':
                     return (
-                        <div class = "container" style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>
-                            <div class = "row">
+                        <div id = 'sypp-applicationDetail-container-id' className = "sypp-applicationDetail-container"   style={{height: 'inherit', overflowY : 'scroll', width : '100% !important'}} >
+                             {/* style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>  */}
+                            <div class = "row" >
                                 <div class = "col">
                                 {
                                     this.props.applicationDetail.events.length !== 0 ? 
@@ -204,7 +205,7 @@ class ApplicationDetailComponents extends Component {
                     )
                 case '1':
                     return (
-                        <div class = "container" style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>
+                        <div className = "sypp-applicationDetail-container" style={{height: 'inherit', overflowY : 'scroll', width : '100% !important'}} >
                             {
                             this.props.applicationDetail.events.map((event) =>(
                                 <ApplicationDetailEvents onSaveEventNote = {this.onSaveEventNote} Event = {event} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
@@ -214,7 +215,7 @@ class ApplicationDetailComponents extends Component {
                     )
                 case '2':
                     return (
-                        <div class = "container" style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>
+                        <div className = "sypp-applicationDetail-container" style={{height: 'inherit', overflowY : 'scroll', width : '100% !important'}} >
                             {
                             this.props.applicationDetail.notes.map((note) =>(
                                 <ApplicationDetailNotes onSaveNote = {this.onSaveNote} Note = {note} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
@@ -224,7 +225,7 @@ class ApplicationDetailComponents extends Component {
                     )
                 case '3':
                     return (
-                        <div class = "container" style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>
+                        <div className = "sypp-applicationDetail-container" style={{height: 'inherit', overflowY : 'scroll', width : '100% !important'}} >
                             {
                             this.props.applicationDetail.contacts.map((data) => (
                                 <ApplicationDetailContacts onSaveContactNote = {this.onSaveContactNote} contact = {data} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
@@ -234,7 +235,7 @@ class ApplicationDetailComponents extends Component {
                     )
                 case '4':
                     return (
-                        <div class = "container" style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>
+                        <div className = "sypp-applicationDetail-container" style={{height: 'inherit', overflowY : 'scroll', width : '100% !important'}} >
                             {
                             this.props.applicationDetail.followUps.map((FollowUp) =>(
                                 <ApplicationDetailFollowUp onSaveConversation = {this.onSaveConversation} FollowUp = {FollowUp} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
@@ -244,7 +245,7 @@ class ApplicationDetailComponents extends Component {
                     )
                 case '5':
                     return (
-                        <div class = "container" style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>
+                        <div className = "sypp-applicationDetail-container" style={{height: 'inherit', overflowY : 'scroll', width : '100% !important'}} >
                             {
                             this.props.applicationDetail.checklists.map((checklist) =>(
                                 <ApplicationDetailChecklists onSaveChecklist = {this.onSaveChecklist} Checklist = {checklist} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
@@ -256,7 +257,7 @@ class ApplicationDetailComponents extends Component {
         }
         else {
             return(
-                <div class = "container" style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>
+                <div className = "sypp-applicationDetail-container" style={{height: 'inherit', overflowY : 'scroll', width : '100% !important'}} >
                 </div>
             );
         }
@@ -265,7 +266,7 @@ class ApplicationDetailComponents extends Component {
     render(){
 
         return(
-            <div>
+            <div style = {{height : '99%'}}>
                 {this.display()}
                 <Popup
                 trigger={

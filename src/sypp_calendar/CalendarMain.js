@@ -111,15 +111,17 @@ class CalendarMain extends Component {
 
       return (
         <section className="sypp-calendar-main">
-          <header className="header">
-            <div className="sypp-month-display sypp-row">
+          <header className="">
+            <div className="sypp-month-display">
               <i className="arrow fa fa-angle-left sypp-calendar-arrow" onClick={this.previous}/>
               {this.renderMonthLabel()}
               <i className="arrow fa fa-angle-right sypp-calendar-arrow" onClick={this.next}/>
             </div>
             <DayNames />
           </header>
-          {this.renderWeeks(taskArray)}
+          <div className = "sypp-weekrow-container">
+            {this.renderWeeks(taskArray)}
+          </div>
         </section>
       );
     }
@@ -128,7 +130,7 @@ class CalendarMain extends Component {
   class DayNames extends React.Component {
       render() {
           return (
-            <div className="sypp-row sypp-day-names">
+            <div className="sypp-day-names">
               <span className="sypp-weekday">Sun</span>
               <span className="sypp-weekday">Mon</span>
               <span className="sypp-weekday">Tue</span>
@@ -210,6 +212,11 @@ class CalendarMain extends Component {
   
       return (
         <div className = {"sypp-day-container" + (day.isToday ? " sypp-today " : " ") + this.state.favoriteType}>
+            <span
+            className={"sypp-day" + (day.isToday ? " today" : "") + (day.isCurrentMonth ? "" : " sypp-different-month") } 
+            >
+                {day.number}
+            </span>
             {/* <span 
             key={date.toString()} 
             className={"sypp-day" + (isToday ? " today" : "") + (isCurrentMonth ? "" : " sypp-different-month") + (date.isSame(selected) ? " selected" : "")} 

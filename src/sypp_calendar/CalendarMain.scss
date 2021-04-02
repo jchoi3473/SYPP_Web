@@ -1,6 +1,8 @@
 .sypp-calendar-main{
     margin: 0px;
     padding: 0px;
+    min-height: 900px;
+    height: 100%;
 }
 
 .sypp-day{
@@ -23,19 +25,28 @@
 }
 
 .sypp-day-container{
-    width: 187px;
-    height: 138px;
+    min-width: 187px;
+    width: 13%;
+    min-height: 138px !important;
+    height: 90%;
+    // height: 16.5rem;
     background: #242931;
     border-radius: 15px;
-    margin-right: 10px;
+    // margin-right: 10px;
     margin-bottom: 11px;
     padding-left: 9px;
     border: transparent;
+}
+.sypp-day{
+
 }
 
 .sypp-row{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+    min-height: 149px;
+    height: 90%;
 }
 
 .sypp-day-names{
@@ -123,8 +134,28 @@
 }
 
 .sypp-calendar-favorite-completed{
-    border: 2px solid rgba(148, 206, 75, 0.87) ;
+    border: 2px solid rgba(148, 206, 75, 0.87) !important;
 }
 .sypp-calendar-favorite-notCompleted{
-    border: 2px solid rgba(255, 214, 0, 0.87);
+    border: 2px solid rgba(255, 214, 0, 0.87) !important;
+}
+.sypp-weekday-day{
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: right;
+
+    color: rgba(255, 255, 255, 0.9);
+}
+.sypp-weekrow-container{
+    height: 100px;
+}
+.sypp-weekrow-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-height: 700px;
+    height: 90%;
 }

@@ -2,13 +2,15 @@
     display: none; 
 }
 .sypp-mainRadio-container{
-    display: flex;
-    flex-direction: row;
+    position: relative;
+    left: 30px;
+    top: 30px;
+    // display: flex;
+    // flex-direction: row;
     font-size: 7px;
     align-items: center;
-    margin-left: 30px;
-    padding-top: 30px;
-    margin-bottom: -5px;
+    // padding-top: 30px;
+    // margin-bottom: -5px;
 }
 
 [type='radio'] {
@@ -78,16 +80,12 @@
     color: rgba(194, 219, 255, 1);
 }
 
-
-
 .btn-secondary.sypp-button-props{
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 90px !important;
 }
-
-
 .sypp-radio-button-container{
     display: flex;
     justify-content: center;

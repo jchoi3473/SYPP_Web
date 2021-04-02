@@ -58,7 +58,8 @@ class ApplicationDetail extends Component {
         ]
         
         return(
-            <div>
+            <div style={{height: 'inherit'}}>
+                <button onClick = { () => this.props.onClickCollapse()}>C</button>
             <ButtonGroup toggle className = "sypp-applicationList-radio-container">
                 {radioValue.map((radio, idx) => (
                     <ToggleButton
@@ -79,14 +80,13 @@ class ApplicationDetail extends Component {
             </ButtonGroup>
             {
                 !this.props.extended?
-                <div > 
+                <div style={{height: '89%'}}> 
                     <ApplicationDetailComponents setRadioValue = {this.setRadioValue} applicationID = {this.props.applicationID} radioValue = {this.state.radioValue} applicationDetail = {app} extended = {this.props.extended}/>
                 </div>:
-                <div >
+                <div style={{height: '89%'}}>
                     <ApplicationDetailComponents setRadioValue = {this.setRadioValue} applicationID = {this.props.applicationID} radioValue = {this.state.radioValue} applicationDetail = {app} extended = {this.props.extended}/>
                 </div>
             }
-            
         </div>
         );
     }

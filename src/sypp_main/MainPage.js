@@ -33,9 +33,7 @@ function MainPage() {
           )
       }else if(radioValue === '1'){
         return(
-            <div>
               <ApplicationsMain />
-            </div>
         )
       }     
       else if(radioValue === '2'){

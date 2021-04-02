@@ -63,7 +63,7 @@ class ApplicationList extends Component {
         }
 
         return(
-            <div>
+            <div style = {{height : '100%'}}>
                 {categoryDivided()}
                 <ApplicationListComponents options = {radioValue} onChange = {this.onChange}/>
                 <ApplicationListProgress onClickProgressAll = {this.props.onClickProgressAll} extended = {this.props.extended}/>

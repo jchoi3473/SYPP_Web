@@ -40,15 +40,12 @@ class CalendarDetail extends Component {
         }
         // for(var i =0;i<this.props.taskArray.length;i++){
             if(this.props.favoriteType == "" && task.Task.isFavorite &&task.Task.status){
-                console.log("this.is.triggered")
                 this.props.onChangefavoriteType("sypp-calendar-favorite-completed")
               }
               else if((this.props.favoriteType == ""||this.props.favoriteType == "sypp-calendar-favorite-completed")&&task.Task.isFavorite&& !task.Task.status){
-                console.log("this.is.triggered maybe")
                 this.props.onChangefavoriteType("sypp-calendar-favorite-notCompleted")
               }
               if(!task.Task.isFavorite){
-                  console.log("Ever triggered")
                 this.props.onChangefavoriteType("")
               }
         // }
@@ -62,15 +59,12 @@ class CalendarDetail extends Component {
             for(var i=0;i<this.props.taskArray.length; i++){
                 var taskDate = new Date(this.props.taskArray[i].Task.time)
                 var currDate = new Date(this.props.date)
-                // console.log(taskDate.toString() + currDate.toString())
                 if(taskDate.getDate() === currDate.getDate() && taskDate.getMonth()+1 === currDate.getMonth()+1 && taskDate.getFullYear()===currDate.getFullYear()){
                     if(this.props.favoriteType == ""&&this.props.taskArray[i].isFavorite && this.props.taskArray[i].Task.status){
-                        console.log("this.is.triggered")
                         this.props.onChangefavoriteType("sypp-calendar-favorite-completed")
                         this.setState({favoriteType : "sypp-calendar-favorite-completed"})
                       }
                       else if((this.props.favoriteType == ""||this.props.favoriteType == "sypp-calendar-favorite-completed")&&this.props.taskArray[i].isFavorite&& !this.props.taskArray[i].Task.status){
-                        console.log("this.is.triggered maybe")
                         this.props.onChangefavoriteType("sypp-calendar-favorite-notCompleted")
                       }
                     return(
@@ -107,11 +101,11 @@ class CalendarDetail extends Component {
     render(){
         return(
             <div>
-                <span
-                className={"sypp-day" + (this.props.isToday ? " today" : "") + (this.props.isCurrentMonth ? "" : " sypp-different-month") + (this.props.date.isSame(this.props.selected) ? " selected" : "")} 
-                onClick={()=>this.props.select(this.props.day)}>
+                {/* <span
+                className={"sypp-day" + (this.props.isToday ? " today" : "") + (this.props.isCurrentMonth ? "" : " sypp-different-month") } 
+               >
                     {this.props.number}
-                </span>
+                </span> */}
                 {this.renderCalendarComponent()}
             </div>
         );
