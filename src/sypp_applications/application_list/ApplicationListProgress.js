@@ -4,11 +4,16 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import './progress/Progress.css'
 import './progress/ProgressBar.scss'
+import ToggleButton from 'react-bootstrap/ToggleButton'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 
+import ReactTooltip from "react-tooltip";
 import './ApplicationList.scss'
 // import Rating from "@material-ui/lab/Rating";
  import Rating from 'react-rating';
-import {setApps} from './../../redux/application-reducer/applicationAction'
+import {setApps, } from './../../redux/application-reducer/applicationAction'
+import {updateFilteredProgress, updateFilteredProgressTitle, updateFilteredProgressButtonValue} from './../../redux/filteredProgress-reducer/filteredProgressAction'
+
 import {connect} from 'react-redux'
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -27,6 +32,9 @@ const mapStatetoProps = state => {
 const mapDispatchToProps= dispatch =>{
     return {
         setApps: (applications) => dispatch(setApps(applications)),
+        updateFilteredProgress: (applications) => dispatch(updateFilteredProgress(applications)),
+        updateFilteredProgressTitle: (title) => dispatch(updateFilteredProgressTitle(title)),
+        updateButtonValue: (value) => dispatch(updateFilteredProgressButtonValue(value))
     }
 }
 
@@ -39,6 +47,7 @@ export class Progress extends Component{
         this.state =  {
             searchField:'',
             isHovering : false,
+            radioValue : '0'
         }
     }
     handleMouseHover(){
@@ -90,6 +99,53 @@ export class Progress extends Component{
         console.log("trigger Trash Can")
     }
 
+
+    radioChange = (e) => {
+        console.log(e.currentTarget.value)
+        if(e.currentTarget.value==='0'||e.currentTarget.value==='1'){
+            e.preventDefault();
+            var name = ''
+            for(var i=0;i<this.props.options.length;i++){
+                if(this.props.options[i].value ===  e.currentTarget.value)
+                name = this.props.options[i].name
+            }
+            // props.onChange(name);
+            // setRadioValue(e.currentTarget.value)
+            var filtered = [] 
+            if(e.currentTarget.value === '0'){
+                filtered = this.props.apps
+                this.props.updateFilteredProgressTitle("All")
+                // setRadioValue('0')
+                this.props.updateButtonValue('0')
+                this.setState({
+                    radioValue : '0'
+                })
+            }
+            //isFavorite = true인 case들
+            else if(e.currentTarget.value === '1'){
+                this.setState({
+                    radioValue : '1'
+                })
+                this.props.updateButtonValue('1')
+                this.props.updateFilteredProgressTitle("Starred")
+                for(var i=0;i<this.props.apps.length;i++){
+                if(this.props.apps[i].detail.isFavorite) 
+                    filtered = filtered.concat(this.props.apps[i])
+                }
+            }
+
+            this.props.updateFilteredProgress(filtered)
+        }
+        else{
+            this.setState({
+                radioValue : e.currentTarget.value
+            })
+        }
+    }
+
+
+
+
     render(){
         const searchFilteredProgress = this.props.filteredProgress.filter(application => {
             return (application.detail.companyName.toLowerCase().includes(this.state.searchField.toLowerCase())||application.detail.positionName.toLowerCase().includes(this.state.searchField.toLowerCase()) )
@@ -97,6 +153,40 @@ export class Progress extends Component{
 
         return(
             <div  style = {{height : '100%'}}>
+            <ButtonGroup toggle className = "sypp-applicationList-radio-container">
+            {this.props.options.map((radio, idx) => (
+                <ToggleButton
+                className={"sypp-colorChange2 sypp-activeChange sypp-hoverChange sypp-text1"}
+                key={idx}
+                type="radio"
+                variant="secondary"
+                name="radio"
+                value={radio.value}
+                checked={this.state.radioValue === radio.value}
+                onChange={(e) => this.radioChange(e, this.state.radioValue)}
+                data-for="radioTip"
+                data-tip = ''
+                // onMouseEnter = {e => handleChange(e)}
+                >
+                  <div className = "sypp-category-radio-padding" name = {radio.name} value = {radio.value}>
+                    {radio.name}
+                  </div>
+                </ToggleButton>
+          ))}
+            <ReactTooltip
+                    // id={(radioValue !== 0&&radioValue.value !== 1)?"radioTip":""}
+                    className = "sypp-CategoryBox sypp-colorFix sypp-colorFixBottom sypp-colorFixBottomBefore sypp-colorFixBottomAfter"
+                    effect='solid'
+                    delayHide={20}
+                    place={'bottom'}
+                    // disable={toolTip}
+                    >
+                        {"testing"}
+            </ReactTooltip>
+            </ButtonGroup>
+
+
+
             <div className ="sypp-searchBox-container">
             <input 
             className ="sypp-applicationlist-searchBox"
