@@ -142,7 +142,7 @@ class ApplicationDetailComponents extends Component {
             switch(this.props.radioValue){
                 case '0':
                     return (
-                        <div id = 'sypp-applicationDetail-container-id' className = "sypp-applicationDetail-container"   style={{height: 'inherit', overflowY : 'scroll', width : '100% !important'}} >
+                        <div id = 'sypp-applicationDetail-container-id' className = "sypp-applicationDetail-container"   style={{height: '89%', overflowY : 'scroll', width : '100% !important'}} >
                              {/* style={this.props.extended?{overflowY: 'scroll', height: '680px'}:{overflowY: 'scroll', height: '490px'}}>  */}
                             <div class = "row" >
                                 <div class = "col">
@@ -205,7 +205,7 @@ class ApplicationDetailComponents extends Component {
                     )
                 case '1':
                     return (
-                        <div className = "sypp-applicationDetail-container" style={{height: 'inherit', overflowY : 'scroll', width : '100% !important'}} >
+                        <div className = "sypp-applicationDetail-container" style={{height: '89%', overflowY : 'scroll', width : '100% !important'}} >
                             {
                             this.props.applicationDetail.events.map((event) =>(
                                 <ApplicationDetailEvents onSaveEventNote = {this.onSaveEventNote} Event = {event} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
@@ -215,7 +215,7 @@ class ApplicationDetailComponents extends Component {
                     )
                 case '2':
                     return (
-                        <div className = "sypp-applicationDetail-container" style={{height: 'inherit', overflowY : 'scroll', width : '100% !important'}} >
+                        <div className = "sypp-applicationDetail-container" style={{height: '89%', overflowY : 'scroll', width : '100% !important'}} >
                             {
                             this.props.applicationDetail.notes.map((note) =>(
                                 <ApplicationDetailNotes onSaveNote = {this.onSaveNote} Note = {note} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
@@ -225,7 +225,7 @@ class ApplicationDetailComponents extends Component {
                     )
                 case '3':
                     return (
-                        <div className = "sypp-applicationDetail-container" style={{height: 'inherit', overflowY : 'scroll', width : '100% !important'}} >
+                        <div className = "sypp-applicationDetail-container" style={{height: '89%', overflowY : 'scroll', width : '100% !important'}} >
                             {
                             this.props.applicationDetail.contacts.map((data) => (
                                 <ApplicationDetailContacts onSaveContactNote = {this.onSaveContactNote} contact = {data} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
@@ -235,7 +235,7 @@ class ApplicationDetailComponents extends Component {
                     )
                 case '4':
                     return (
-                        <div className = "sypp-applicationDetail-container" style={{height: 'inherit', overflowY : 'scroll', width : '100% !important'}} >
+                        <div className = "sypp-applicationDetail-container" style={{height: '89%', overflowY : 'scroll', width : '100% !important'}} >
                             {
                             this.props.applicationDetail.followUps.map((FollowUp) =>(
                                 <ApplicationDetailFollowUp onSaveConversation = {this.onSaveConversation} FollowUp = {FollowUp} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
@@ -245,7 +245,7 @@ class ApplicationDetailComponents extends Component {
                     )
                 case '5':
                     return (
-                        <div className = "sypp-applicationDetail-container" style={{height: 'inherit', overflowY : 'scroll', width : '100% !important'}} >
+                        <div className = "sypp-applicationDetail-container" style={{height: '89%', overflowY : 'scroll', width : '100% !important'}} >
                             {
                             this.props.applicationDetail.checklists.map((checklist) =>(
                                 <ApplicationDetailChecklists onSaveChecklist = {this.onSaveChecklist} Checklist = {checklist} applicationID = {this.props.applicationDetail.applicationID} type ={'application'}/>
@@ -257,34 +257,37 @@ class ApplicationDetailComponents extends Component {
         }
         else {
             return(
-                <div className = "sypp-applicationDetail-container" style={{height: 'inherit', overflowY : 'scroll', width : '100% !important'}} >
+                <div className = "sypp-applicationDetail-container" style={{height: '89%', overflowY : 'scroll', width : '100% !important'}} >
                 </div>
             );
         }
     }
 
     render(){
-
         return(
-            <div style = {{height : '99%'}}>
-                {this.display()}
-                <Popup
-                trigger={
-                    <button 
-                    className = {"sypp-detail-add-button" + (this.props.extended?" sypp-detail-add-button-extended":" sypp-detail-add-button-notExtended")}>+</button>
-                }
-                position={'right'}
-                closeOnEscape
-                closeOnDocumentClick
-                >
-                <div className = "sypp-tooltip-button-container">
-                    <button className = "sypp-create-detail-button sypp-create-detail-button1" onClick = {() => this.onClick('1')}>Events</button>
-                    <button className = "sypp-create-detail-button sypp-create-detail-button2" onClick = {() => this.onClick('2')}>Notes</button>
-                    <button className = "sypp-create-detail-button sypp-create-detail-button3" onClick = {() => this.onClick('3')}>Contacts</button>
-                    <button className = "sypp-create-detail-button sypp-create-detail-button4" onClick = {() => this.onClick('4')}>Conversation Histories</button>
-                    <button className = "sypp-create-detail-button sypp-create-detail-button5" onClick = {() => this.onClick('5')}>Checklists</button>
-                    </div>
-                </Popup>
+            <div style = {{height : '100%'}}>
+                <div style = {{height : '100%'}}>
+                    {this.display()}
+                </div>
+                <div className = "sypp-application-detail-add-container">
+                    <Popup
+                    trigger={
+                        <button 
+                        className = {"sypp-detail-add-button" + (this.props.extended?" sypp-detail-add-button-extended":" sypp-detail-add-button-notExtended")}>+</button>
+                    }
+                    position={'right'}
+                    closeOnEscape
+                    closeOnDocumentClick
+                    >
+                    <div className = "sypp-tooltip-button-container">
+                        <button className = "sypp-create-detail-button sypp-create-detail-button1" onClick = {() => this.onClick('1')}>Events</button>
+                        <button className = "sypp-create-detail-button sypp-create-detail-button2" onClick = {() => this.onClick('2')}>Notes</button>
+                        <button className = "sypp-create-detail-button sypp-create-detail-button3" onClick = {() => this.onClick('3')}>Contacts</button>
+                        <button className = "sypp-create-detail-button sypp-create-detail-button4" onClick = {() => this.onClick('4')}>Conversation Histories</button>
+                        <button className = "sypp-create-detail-button sypp-create-detail-button5" onClick = {() => this.onClick('5')}>Checklists</button>
+                        </div>
+                    </Popup>
+                </div>
                 <Modal 
                 show={this.state.show}
                 onHide={this.handleClose}
