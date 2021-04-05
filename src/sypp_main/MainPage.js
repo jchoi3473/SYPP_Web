@@ -38,9 +38,7 @@ function MainPage() {
       }     
       else if(radioValue === '2'){
         return(
-            <div>
               <CompanyMain/>
-            </div>
         )
       }  else if(radioValue === '3'){
         return(

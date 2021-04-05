@@ -60,7 +60,7 @@ class CompanyDetail extends Component {
         ]
         
         return(
-            <div>
+            <div style ={{height : '100%'}}>
             <ButtonGroup toggle className = "sypp-applicationList-radio-container">
                 {radioValue.map((radio, idx) => (
                     <ToggleButton
@@ -81,10 +81,10 @@ class CompanyDetail extends Component {
             </ButtonGroup>
             {
                 !this.props.extended?
-                <div> 
+                <div style ={{height : '100%'}}> 
                     <CompanyDetailComponents setRadioValue = {this.setRadioValue} companyID = {this.props.companyID} radioValue = {this.state.radioValue} companyDetail = {company} extended = {this.props.extended}/>
                 </div>:
-                <div>
+                <div style ={{height : '100%'}}>
                     <CompanyDetailComponents setRadioValue = {this.setRadioValue} companyID = {this.props.companyID} radioValue = {this.state.radioValue} companyDetail = {company} extended = {this.props.extended}/>
                 </div>
             }

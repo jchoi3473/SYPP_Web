@@ -50,7 +50,7 @@ class CompanyMain extends Component {
                             <CompanyDetail companyID = {this.state.companyID} extended = {false}/>
                         </div>
                         </div> :
-                    <div className = "sypp-applicationMain-subContainer">
+                    <div className = "sypp-applicationMain-subContainer-extended">
                         <div className = "sypp-companyMain-list-extended">
                             <CompanyList onClickCompany = {this.onClickCompany} extended = {true}/>
                         </div>

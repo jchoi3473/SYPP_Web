@@ -1,6 +1,7 @@
 .sypp-CompanyList-All-Container{
 margin-left: 20px;
 margin-top: 20px;
+height: 100%;
 }
 .sypp-Company-container{
     // margin: 0 auto;
@@ -71,11 +72,14 @@ margin-top: 20px;
     margin-bottom: 5px;
     color: rgba(255, 255, 255, 0.9);
 }
+.sypp-newcompany-container{
+    position: relative;
+    bottom: 65px;
+}
 
 .sypp-newcompany-button{
-    position: absolute;
+    position: relative;
     bottom: 20px;
-    left: 20px;
     display: flex;
     border: none;
     width: 130px;
