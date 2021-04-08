@@ -74,36 +74,40 @@ export class CompanyList extends Component{
           })
         return(
             <div className ="sypp-CompanyList-All-Container">
-            <div className ="sypp-searchBox-container">
-            <input 
-            className ="sypp-company-searchBox"
-            type='search' 
-            placeholder = '  Search company'
-            onChange = {e => this.onSearchChange(e)}
-            value = {this.state.searchField}
-            />
-            </div>
-            <div className = "sypp-company-sortby">
-              Testing
-            </div>
-            <div className = "sypp-CompanyList-container" style={this.props.extended?{overflowY: 'scroll', height: '650px'}:{overflowY: 'scroll', height: '470px'}}>
-            {
-              (searchFilteredProgress.length > 0)?
-              searchFilteredProgress.map((data) => (
-                <div className = "sypp-Company-container"  >
-                  <Rating className ="sypp-starIcon" companyName = {data.companyID} stop={1} initialRating = {data.detail.isFavorite?1:0} onClick = {() => this.onClickIsFavorite(data.companyID)}
-                  emptySymbol="fa fa-star-o starSize starIcon"
-                  fullSymbol = "fa fa-star starSize starIcon"
+              <div style = {{height : '100%'}}>
+                <div className ="sypp-searchBox-container">
+                  <input 
+                  className ="sypp-company-searchBox"
+                  type='search' 
+                  placeholder = '  Search company'
+                  onChange = {e => this.onSearchChange(e)}
+                  value = {this.state.searchField}
                   />
-                <div className = "sypp-CompanyList" onClick = {() => this.props.onClickCompany(data.companyID)}>{data.detail.companyName}</div>
                 </div>
-              )):undefined
-            }
-            </div>
-            <div onClick = {this.handleShow} className = {"sypp-newcompany-button"}>
-                <div className = "sypp-newapp-button-plus">+</div>
-                <div className = "sypp-newapp-button-body">New Company</div>
-            </div>
+                <div className = "sypp-company-sortby">
+                  Testing
+                </div>
+                <div className = "sypp-CompanyList-container" style={this.props.extended?{overflowY: 'scroll', height: '85%'}:{overflowY: 'scroll', height: '85%'}}>
+                {
+                  (searchFilteredProgress.length > 0)?
+                  searchFilteredProgress.map((data) => (
+                    <div className = "sypp-Company-container"  >
+                      <Rating className ="sypp-starIcon" companyName = {data.companyID} stop={1} initialRating = {data.detail.isFavorite?1:0} onClick = {() => this.onClickIsFavorite(data.companyID)}
+                      emptySymbol="fa fa-star-o starSize starIcon"
+                      fullSymbol = "fa fa-star starSize starIcon"
+                      />
+                    <div className = "sypp-CompanyList" onClick = {() => this.props.onClickCompany(data.companyID)}>{data.detail.companyName}</div>
+                    </div>
+                  )):undefined
+                }
+                </div>
+              </div>
+              <div className = "sypp-newcompany-container">
+              <div onClick = {this.handleShow} className = "sypp-newcompany-button">
+                  <div className = "sypp-newapp-button-plus">+</div>
+                  <div className = "sypp-newapp-button-body">New Company</div>
+              </div>
+              </div>
             <Modal
             show = {this.state.show}
             onHide={this.handleClose} 

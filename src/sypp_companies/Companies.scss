@@ -2,31 +2,39 @@
     margin-left: 20px;
 }
 .sypp-companyMain-list{
-    width: 250px;
-    height: 569px;
+    width: 354px;
+    min-height: 569px;
+    height: 100%;
     background: #242931;
     border-radius: 20px;
     margin-right: 20px;
+    padding-right: 10px;
 }
 .sypp-companyMain-detail{
     // width: 100%;
-    width: 1110px;
-    height: 569px;
+    min-width: 1006px;
+    width: 100%;
+    min-height: 569px;
+    height: 100%;
     background: #242931;
     border-radius: 20px;
     padding-left: 15px;
     padding-right: 11px;
 }
 .sypp-companyMain-list-extended{
-    width: 250px;
-    height: 758px;
+    width: 354px;
+    min-height: 758px;
+    height: 100%;
     background: #242931;
     border-radius: 20px;
     margin-right: 20px;
+    padding-right: 10px;
 }
 .sypp-companyMain-detail-extended{
-    width: 1110px;
-    height: 758px;
+    min-width: 1006px;
+    width: 100%;
+    min-height: 758px;
+    height: 100%;
     background: #242931;
     border-radius: 20px;
     padding-left: 15px;

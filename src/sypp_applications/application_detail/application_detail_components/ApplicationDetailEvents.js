@@ -10,6 +10,7 @@ import { faListAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Moment from 'moment';
 import Modal from 'react-bootstrap/Modal';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import CreateEditEvent from './../../../components/create_edit_components/create_edit_event/CreateEditEvent'
 // import CreateEditEvent from './../create_edit_applications_components/create_edit_event/CreateEditEvent'

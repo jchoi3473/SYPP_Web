@@ -80,10 +80,10 @@ class ApplicationDetail extends Component {
             </ButtonGroup>
             {
                 !this.props.extended?
-                <div style={{height: '89%'}}> 
+                <div style={{height: '100%'}}> 
                     <ApplicationDetailComponents setRadioValue = {this.setRadioValue} applicationID = {this.props.applicationID} radioValue = {this.state.radioValue} applicationDetail = {app} extended = {this.props.extended}/>
                 </div>:
-                <div style={{height: '89%'}}>
+                <div style={{height: '100%'}}>
                     <ApplicationDetailComponents setRadioValue = {this.setRadioValue} applicationID = {this.props.applicationID} radioValue = {this.state.radioValue} applicationDetail = {app} extended = {this.props.extended}/>
                 </div>
             }
