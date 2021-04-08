@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/SYPP_Web_personal/static/css/main.40690467.chunk.css",
-    "main.js": "/SYPP_Web_personal/static/js/main.c74df8c5.chunk.js",
-    "main.js.map": "/SYPP_Web_personal/static/js/main.c74df8c5.chunk.js.map",
+    "main.css": "/SYPP_Web_personal/static/css/main.e61ed4a2.chunk.css",
+    "main.js": "/SYPP_Web_personal/static/js/main.53d6690b.chunk.js",
+    "main.js.map": "/SYPP_Web_personal/static/js/main.53d6690b.chunk.js.map",
     "runtime-main.js": "/SYPP_Web_personal/static/js/runtime-main.a4216541.js",
     "runtime-main.js.map": "/SYPP_Web_personal/static/js/runtime-main.a4216541.js.map",
-    "static/css/2.1fd78f5f.chunk.css": "/SYPP_Web_personal/static/css/2.1fd78f5f.chunk.css",
-    "static/js/2.28d85331.chunk.js": "/SYPP_Web_personal/static/js/2.28d85331.chunk.js",
-    "static/js/2.28d85331.chunk.js.map": "/SYPP_Web_personal/static/js/2.28d85331.chunk.js.map",
+    "static/css/2.5fd46726.chunk.css": "/SYPP_Web_personal/static/css/2.5fd46726.chunk.css",
+    "static/js/2.d0a4a568.chunk.js": "/SYPP_Web_personal/static/js/2.d0a4a568.chunk.js",
+    "static/js/2.d0a4a568.chunk.js.map": "/SYPP_Web_personal/static/js/2.d0a4a568.chunk.js.map",
     "static/js/3.4715dfdf.chunk.js": "/SYPP_Web_personal/static/js/3.4715dfdf.chunk.js",
     "static/js/3.4715dfdf.chunk.js.map": "/SYPP_Web_personal/static/js/3.4715dfdf.chunk.js.map",
     "index.html": "/SYPP_Web_personal/index.html",
-    "static/css/2.1fd78f5f.chunk.css.map": "/SYPP_Web_personal/static/css/2.1fd78f5f.chunk.css.map",
-    "static/css/main.40690467.chunk.css.map": "/SYPP_Web_personal/static/css/main.40690467.chunk.css.map",
-    "static/js/2.28d85331.chunk.js.LICENSE.txt": "/SYPP_Web_personal/static/js/2.28d85331.chunk.js.LICENSE.txt",
+    "static/css/2.5fd46726.chunk.css.map": "/SYPP_Web_personal/static/css/2.5fd46726.chunk.css.map",
+    "static/css/main.e61ed4a2.chunk.css.map": "/SYPP_Web_personal/static/css/main.e61ed4a2.chunk.css.map",
+    "static/js/2.d0a4a568.chunk.js.LICENSE.txt": "/SYPP_Web_personal/static/js/2.d0a4a568.chunk.js.LICENSE.txt",
     "static/media/font-awesome.min.css": "/SYPP_Web_personal/static/media/fontawesome-webfont.f691f37e.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.a4216541.js",
-    "static/css/2.1fd78f5f.chunk.css",
-    "static/js/2.28d85331.chunk.js",
-    "static/css/main.40690467.chunk.css",
-    "static/js/main.c74df8c5.chunk.js"
+    "static/css/2.5fd46726.chunk.css",
+    "static/js/2.d0a4a568.chunk.js",
+    "static/css/main.e61ed4a2.chunk.css",
+    "static/js/main.53d6690b.chunk.js"
   ]
 }
