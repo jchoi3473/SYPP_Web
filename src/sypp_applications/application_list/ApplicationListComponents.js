@@ -97,7 +97,6 @@ function CategoryButtons(props) {
               }
           }
       }
-
     return(
       <div className = "sypp-tooltip-container">
       { 
@@ -130,8 +129,8 @@ function CategoryButtons(props) {
               }
             }
           }
-       }
-    }
+        }
+      }   
       props.updateFilteredProgress(filtered)
     }
 

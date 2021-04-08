@@ -4,11 +4,16 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import './progress/Progress.css'
 import './progress/ProgressBar.scss'
+import ToggleButton from 'react-bootstrap/ToggleButton'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 
+import ReactTooltip from "react-tooltip";
 import './ApplicationList.scss'
 // import Rating from "@material-ui/lab/Rating";
  import Rating from 'react-rating';
-import {setApps} from './../../redux/application-reducer/applicationAction'
+import {setApps, } from './../../redux/application-reducer/applicationAction'
+import {updateFilteredProgress, updateFilteredProgressTitle, updateFilteredProgressButtonValue} from './../../redux/filteredProgress-reducer/filteredProgressAction'
+
 import {connect} from 'react-redux'
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -27,11 +32,14 @@ const mapStatetoProps = state => {
 const mapDispatchToProps= dispatch =>{
     return {
         setApps: (applications) => dispatch(setApps(applications)),
+        updateFilteredProgress: (applications) => dispatch(updateFilteredProgress(applications)),
+        updateFilteredProgressTitle: (title) => dispatch(updateFilteredProgressTitle(title)),
+        updateButtonValue: (value) => dispatch(updateFilteredProgressButtonValue(value))
     }
 }
 
 
-export class Progress extends Component{
+export class ApplicationListProgress extends Component{
     constructor(){
         super();
         this.handleMouseHover = this.handleMouseHover.bind(this);
@@ -39,6 +47,9 @@ export class Progress extends Component{
         this.state =  {
             searchField:'',
             isHovering : false,
+            radioValue : '0',
+            radioName : '',
+            categoryValue : ''
         }
     }
     handleMouseHover(){
@@ -89,6 +100,143 @@ export class Progress extends Component{
     onClickDelete = () =>{
         console.log("trigger Trash Can")
     }
+    categorySpecified = () =>{
+        var temp = []
+            for(var i=0; i<this.props.apps.length ;i++){
+                //save i as an index
+                for(var j=0;j<this.props.apps[i].detail.categories.length;j++){
+                    if(this.props.apps[i].detail.categories[j].type === this.state.radioName){
+                        // filtered = filtered.concat(this.props.apps[i])
+
+                        // for(var k=0; k<this.props.apps[i].detail.categories[j].suggestionsOrSeleceted.length;k++){
+                        //     if(e.target.getAttribute('name') === this.props.apps[i].detail.categories[j].suggestionsOrSeleceted[k]){
+                        //     }
+                        // }
+                        for(var k=0; k<this.props.apps[i].detail.categories[j].suggestionsOrSeleceted.length;k++){
+                            if(!temp.includes(this.props.apps[i].detail.categories[j].suggestionsOrSeleceted[k])){
+                              temp = temp.concat(this.props.apps[i].detail.categories[j].suggestionsOrSeleceted[k])
+                            }
+                          }    
+                    }
+                }
+            }
+
+        return(
+            // <div className = "custom-select">
+                // <select className = "sypp-custom-select" onChange = {(e) => this.onClickSpecificCategory(e)}>
+                //     { 
+                //         temp.map((entity) => (
+                //         <option className = "sypp-custom-option" value = {entity}>{entity}</option>
+                //         ))
+                //     }
+                // </select>
+                <div class="custom-select-wrapper">
+                <div class="custom-select">
+                    <div class="custom-select__trigger"><span>Tesla</span>
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="custom-options">
+                        <span class="custom-option selected" data-value="tesla">Tesla</span>
+                        <span class="custom-option" data-value="volvo">Volvo</span>
+                        <span class="custom-option" data-value="mercedes">Mercedes</span>
+                    </div>
+                </div>
+            </div>
+            // </div>
+        )
+    }
+
+    onClickSpecificCategory = (e) => {
+        e.preventDefault()
+        var filtered = [] 
+        for(var i=0; i<this.props.apps.length ;i++){
+            for(var j=0;j<this.props.apps[i].detail.categories.length;j++){
+                if(this.props.apps[i].detail.categories[j].type === this.state.radioName && this.props.apps[i].detail.categories[j].suggestionsOrSeleceted.includes(e.target.value)){
+                    filtered = filtered.concat(this.props.apps[i])
+                }
+            }
+        }
+        this.props.updateFilteredProgressTitle(e.target.value)   
+        this.props.updateFilteredProgress(filtered)
+    }
+
+    radioChange = (radio) => {
+        console.log(radio.name)
+        var filtered = [] 
+        if(radio.value==='0'||radio.value==='1'){
+            // e.preventDefault();
+            var name = ''
+            for(var i=0;i<this.props.options.length;i++){
+                if(this.props.options[i].value ===  radio.value)
+                name = this.props.options[i].name
+            }
+            // props.onChange(name);
+            // setRadioValue(e.currentTarget.value)
+            if(radio.value === '0'){
+                filtered = this.props.apps
+                this.props.updateFilteredProgressTitle("All")
+                // setRadioValue('0')
+                this.props.updateButtonValue('0')
+                this.setState({
+                    radioValue : '0'
+                })
+            }
+            //isFavorite = true인 case들
+            else if(radio.value === '1'){
+                this.setState({
+                    radioValue : '1'
+                })
+                this.props.updateButtonValue('1')
+                this.props.updateFilteredProgressTitle("Starred")
+                for(var i=0;i<this.props.apps.length;i++){
+                if(this.props.apps[i].detail.isFavorite) 
+                    filtered = filtered.concat(this.props.apps[i])
+                }
+            }
+        }
+        else{
+            var temp = []
+            for(var i=0; i<this.props.apps.length ;i++){
+                //save i as an index
+                for(var j=0;j<this.props.apps[i].detail.categories.length;j++){
+                    if(this.props.apps[i].detail.categories[j].type === radio.name){
+                        // console.log("triggered")
+                        // filtered = filtered.concat(this.props.apps[i])
+
+                        // for(var k=0; k<this.props.apps[i].detail.categories[j].suggestionsOrSeleceted.length;k++){
+                        //     if(e.target.getAttribute('name') === this.props.apps[i].detail.categories[j].suggestionsOrSeleceted[k]){
+                        //     }
+                        // }
+                        for(var k=0; k<this.props.apps[i].detail.categories[j].suggestionsOrSeleceted.length;k++){
+                            if(!temp.includes(this.props.apps[i].detail.categories[j].suggestionsOrSeleceted[k])){
+                              temp = temp.concat(this.props.apps[i].detail.categories[j].suggestionsOrSeleceted[k])
+                            }
+                          }    
+                    }
+                }
+            }
+            if(temp.length>0){
+                for(var i=0; i<this.props.apps.length ;i++){
+                    for(var j=0;j<this.props.apps[i].detail.categories.length;j++){
+                        if(this.props.apps[i].detail.categories[j].type === radio.name && this.props.apps[i].detail.categories[j].suggestionsOrSeleceted.includes(temp[0])){
+                            // console.log(temp[0])
+                            filtered = filtered.concat(this.props.apps[i])
+                        }
+                    }
+                }
+            }
+            this.props.updateFilteredProgressTitle(temp[0])   
+            this.setState({
+                radioValue : radio.value,
+                radioName : radio.name
+            })
+        }
+        this.props.updateFilteredProgress(filtered)
+
+    }
+
+
+
 
     render(){
         const searchFilteredProgress = this.props.filteredProgress.filter(application => {
@@ -97,6 +245,40 @@ export class Progress extends Component{
 
         return(
             <div  style = {{height : '100%'}}>
+            <ButtonGroup toggle className = "sypp-applicationList-radio-container">
+            {this.props.options.map((radio, idx) => (
+                <ToggleButton
+                className={"sypp-colorChange2 sypp-activeChange sypp-hoverChange sypp-text1"}
+                key={idx}
+                type="radio"
+                variant="secondary"
+                name="radio"
+                value={radio.value}
+                checked={this.state.radioValue === radio.value}
+                onChange={(e) => this.radioChange(radio)}
+                data-for="radioTip"
+                data-tip = ''
+                // onMouseEnter = {e => handleChange(e)}
+                >
+                  <div className = "sypp-category-radio-padding" name = {radio.name} value = {radio.value}>
+                    {radio.name}
+                  </div>
+                </ToggleButton>
+          ))}
+            {/* <ReactTooltip
+                    // id={(radioValue !== 0&&radioValue.value !== 1)?"radioTip":""}
+                    className = "sypp-CategoryBox sypp-colorFix sypp-colorFixBottom sypp-colorFixBottomBefore sypp-colorFixBottomAfter"
+                    effect='solid'
+                    delayHide={20}
+                    place={'bottom'}
+                    // disable={toolTip}
+                    >
+                        {"testing"}
+            </ReactTooltip> */}
+            </ButtonGroup>
+
+
+
             <div className ="sypp-searchBox-container">
             <input 
             className ="sypp-applicationlist-searchBox"
@@ -106,7 +288,30 @@ export class Progress extends Component{
             value = {this.state.searchField}
             />
             </div>
-            {this.props.selectedTitle !== ""? <div className ="sypp-selectedTitle">{this.props.selectedTitle}</div>:undefined}
+            {this.props.selectedTitle !== "" ? 
+            <>
+                {
+                (this.state.radioValue==='0'||this.state.radioValue==='1')? 
+                <div className ="sypp-selectedTitle">{this.props.selectedTitle}
+                </div>:
+                <>
+                    {
+                    this.categorySpecified()
+                    }
+                </> 
+                }
+            </>: undefined
+            
+            }
+
+            {/* {(this.state.radioValue==='0'||this.state.radioValue==='1')? <div className ="sypp-selectedTitle">{this.props.selectedTitle}</div>:undefined}
+            {(this.props.selectedTitle !== "" && (this.state.radioValue!='0'||this.state.radioValue!='1'))?  */}
+            {/* <>
+                {
+                    this.categorySpecified()
+                }
+            </>:<></>} */}
+
             <div className = "sypp-task-sortby">Testing</div>
             <div className = "sypp-taskTitles">
                 <div className="sypp-taskEntity">Apply</div>
@@ -141,4 +346,4 @@ export class Progress extends Component{
     }
 }
 
-export default connect(mapStatetoProps,mapDispatchToProps)(Progress);
+export default connect(mapStatetoProps,mapDispatchToProps)(ApplicationListProgress);
