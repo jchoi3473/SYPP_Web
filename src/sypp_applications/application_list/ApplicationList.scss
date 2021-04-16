@@ -47,7 +47,7 @@
 
 .sypp-modalButton{
     position: relative;
-    bottom: 110px;
+    bottom: 65px;
     left: 10px;
     z-index: 5;
 }
@@ -203,4 +203,38 @@
 .open .arrow::after {
   left: 5px;
   transform: rotate(45deg);
+}
+
+.sypp-category-dropdown{
+  position: relative;
+  display: inline-block !important;
+  width: fit-content;
+  color: white ;
+  font-size: 14px; 
+  font-weight: bold;
+}
+.Dropdown-arrow-wrapper.sypp-category-dropdown-arrowdiv{
+  margin-left: 15px; 
+}
+.sypp-category-dropdown-arrow{
+  margin-left: 4px;
+  font-size: 0.8rem;
+  color: white;
+}
+.sypp-Dropdown-control{
+  display: flex;
+  cursor: pointer;
+}
+.sypp-Dropdown-menu{
+  cursor: pointer;
+  position: absolute;
+  padding: 5px;
+  width: 113px;
+  background: #1E2127;  
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-top: transparent;
+  border-radius: 0px 0px 10px 10px;
+  font-size: 10px;
+  text-align: center;
+  z-index: 1000;
 }

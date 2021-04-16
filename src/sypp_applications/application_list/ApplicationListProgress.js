@@ -6,6 +6,8 @@ import './progress/Progress.css'
 import './progress/ProgressBar.scss'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import Dropdown from 'react-dropdown';
+
 
 import ReactTooltip from "react-tooltip";
 import './ApplicationList.scss'
@@ -18,7 +20,11 @@ import {connect} from 'react-redux'
 import 'font-awesome/css/font-awesome.min.css';
 
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { SpaceBarOutlined } from '@material-ui/icons';
 
 
 
@@ -122,42 +128,36 @@ export class ApplicationListProgress extends Component{
             }
 
         return(
-            // <div className = "custom-select">
-                // <select className = "sypp-custom-select" onChange = {(e) => this.onClickSpecificCategory(e)}>
-                //     { 
-                //         temp.map((entity) => (
-                //         <option className = "sypp-custom-option" value = {entity}>{entity}</option>
-                //         ))
-                //     }
-                // </select>
-                <div class="custom-select-wrapper">
-                <div class="custom-select">
-                    <div class="custom-select__trigger"><span>Tesla</span>
-                        <div class="arrow"></div>
-                    </div>
-                    <div class="custom-options">
-                        <span class="custom-option selected" data-value="tesla">Tesla</span>
-                        <span class="custom-option" data-value="volvo">Volvo</span>
-                        <span class="custom-option" data-value="mercedes">Mercedes</span>
-                    </div>
-                </div>
-            </div>
-            // </div>
+            <>
+                <Dropdown 
+                className = "sypp-category-dropdown sypp-category-dropdown-arrowdiv"
+                arrowClassName = "sypp-category-dropdown-arrowdiv"
+                controlClassName = "sypp-Dropdown-control"
+                menuClassName = "sypp-Dropdown-menu"
+                options = {temp} 
+                onChange = {this.onClickSpecificCategory} 
+                value = {this.props.selectedTitle} 
+                arrowClosed = {<FontAwesomeIcon className = "sypp-category-dropdown-arrow" icon={faChevronUp}/>}
+                arrowOpen = {<FontAwesomeIcon className = "sypp-category-dropdown-arrow" icon={faChevronDown}/>}        
+                />
+            </>
         )
     }
 
-    onClickSpecificCategory = (e) => {
-        e.preventDefault()
+    onClickSpecificCategory = value => {
+        console.log(Object.values(value)[0])
+        
         var filtered = [] 
         for(var i=0; i<this.props.apps.length ;i++){
             for(var j=0;j<this.props.apps[i].detail.categories.length;j++){
-                if(this.props.apps[i].detail.categories[j].type === this.state.radioName && this.props.apps[i].detail.categories[j].suggestionsOrSeleceted.includes(e.target.value)){
+                if(this.props.apps[i].detail.categories[j].type === this.state.radioName && this.props.apps[i].detail.categories[j].suggestionsOrSeleceted.includes(Object.values(value)[0])){
                     filtered = filtered.concat(this.props.apps[i])
                 }
             }
         }
-        this.props.updateFilteredProgressTitle(e.target.value)   
+        this.props.updateFilteredProgressTitle(Object.values(value)[0])
         this.props.updateFilteredProgress(filtered)
+        // () => console.log('option selected', this.props.selectedTitle)
     }
 
     radioChange = (radio) => {
@@ -245,40 +245,29 @@ export class ApplicationListProgress extends Component{
 
         return(
             <div  style = {{height : '100%'}}>
-            <ButtonGroup toggle className = "sypp-applicationList-radio-container">
-            {this.props.options.map((radio, idx) => (
-                <ToggleButton
-                className={"sypp-colorChange2 sypp-activeChange sypp-hoverChange sypp-text1"}
-                key={idx}
-                type="radio"
-                variant="secondary"
-                name="radio"
-                value={radio.value}
-                checked={this.state.radioValue === radio.value}
-                onChange={(e) => this.radioChange(radio)}
-                data-for="radioTip"
-                data-tip = ''
-                // onMouseEnter = {e => handleChange(e)}
-                >
-                  <div className = "sypp-category-radio-padding" name = {radio.name} value = {radio.value}>
-                    {radio.name}
-                  </div>
-                </ToggleButton>
-          ))}
-            {/* <ReactTooltip
-                    // id={(radioValue !== 0&&radioValue.value !== 1)?"radioTip":""}
-                    className = "sypp-CategoryBox sypp-colorFix sypp-colorFixBottom sypp-colorFixBottomBefore sypp-colorFixBottomAfter"
-                    effect='solid'
-                    delayHide={20}
-                    place={'bottom'}
-                    // disable={toolTip}
+            {/* <div style = {{width : '200px', overflowX : 'scroll'}}> */}
+                <ButtonGroup toggle className = "sypp-applicationList-radio-container">
+                {this.props.options.map((radio, idx) => (
+                    <ToggleButton
+                    className={"sypp-colorChange2 sypp-activeChange sypp-hoverChange sypp-text1"}
+                    key={idx}
+                    type="radio"
+                    variant="secondary"
+                    name="radio"
+                    value={radio.value}
+                    checked={this.state.radioValue === radio.value}
+                    onChange={(e) => this.radioChange(radio)}
+                    data-for="radioTip"
+                    data-tip = ''
+                    // onMouseEnter = {e => handleChange(e)}
                     >
-                        {"testing"}
-            </ReactTooltip> */}
-            </ButtonGroup>
-
-
-
+                    <div className = "sypp-category-radio-padding" name = {radio.name} value = {radio.value}>
+                        <span style = {{minWidth : 'fit-content'}}>{radio.name}</span>
+                    </div>
+                    </ToggleButton>
+            ))}
+                </ButtonGroup>
+            {/* </div> */}
             <div className ="sypp-searchBox-container">
             <input 
             className ="sypp-applicationlist-searchBox"
